@@ -208,6 +208,7 @@ body {
            .style-content {
                       font-size: 13px;
                       flex-wrap: wrap;
+                      font-family: "Manufacturing Consent";
            }
            .style-button button {
                       width: 100px;
