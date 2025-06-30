@@ -388,6 +388,14 @@ body {
            text-shadow: 0px 1px 1px black;
 }
 @media screen and (max-width: 550px) {
+           * {
+                      font-size: 10px;
+                      font-family: "Manufacturing Consent", system-ui;
+           }
+           body {
+                      padding: 5px;
+                      overflow-x: hidden;
+           }
            .grid-container {
                       display: flex;
                       flex-direction: column;
