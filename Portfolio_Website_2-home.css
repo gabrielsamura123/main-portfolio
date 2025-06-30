@@ -137,7 +137,7 @@ body {
            flex-direction: column;
 }
 .style-title {
-           font-family: Cooper;
+           font-family: Papyrus;
            font-size: 50px;
            font-weight: bold;
            color: white;
@@ -203,6 +203,7 @@ body {
            }
            .style-title {
                       font-size: 15px;
+                      font-family: "Manufacturing Consent";
            }
            .style-content {
                       font-size: 13px;
