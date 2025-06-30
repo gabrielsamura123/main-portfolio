@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Gabriel Page</title>
+           <link rel="shortcut icon" href="Gabriel Images/Edited.jpg">
+           <link rel="stylesheet" href="aos.css">
+</head>
+<body>
+           <div class="nav-container">
+                      <h1><a href="index.html">GABRIEL</a></h1>
+                      <div class="links" >
+                                 <a href="https://www.youtube.com/Zero_to_Programmer"><img src="YT_icon.png" alt="Youtube icon to follow my channel" title="Follow my channel"></a>
+                                 <a href="https://instagram.com/gibson_sam_programmer"><img src="IG_icon.png" alt="Instagram icon to chat with me" title="Chat with me on IG"></a>
+                                 <a href="https://www.linkedin.com/in/gabriel-samura"><img src="Linkedin_icon.png" alt="Linked icon to contact me" title="See more about me on Linkedin"></a>
+                                 <a href="tel:+23273287317"><img src="PH_icon.png" alt="Phone icon to call me" title="Feel free to call me anytime"></a>
+                                <img src="hamburger-menu.svg" alt="this is the image for the drop down menu" onclick="showMenu()">
+                      </div>
+           </div>
+           <div class="overflow-container" id="menu" data-aos="zoom-in-up">
+                      <li><a href="Portfolio_Website_2-about.html">🤵🏾About</a></li>
+                      <li><a href="Portfolio_Website_2-services.html">🧰Services</a></li>
+                      <li><a href="Portfolio_Website_2-projects.html">📽️Projects</a></li>
+           </div>
+           <div class="info-for-about" data-aos="slide-up">
+                      <h1>Services</h1>
+                      <hr width="5%">
+                      <p>I'm Gabriel Samura and a full-stack web developer and i offer the following services below/p>
+           </div>
+           <div class="services-container">
+                      <div class="web" data-aos="flip-up">
+                                 <h1>Web Development</h1>
+                                 <p>Build stunning websites for brand, business, personal and more</p>
+                                 <div class="con">
+                                            <p>Want me to build website for you? </p>
+                                            <button><a href="mailto:gabrielsamura9@gmail.com" style="color: wheat; text-decoration: none;">Hire Me</a></button>
+                                 </div>
+                      </div>
+                      <div class="ITsupport" data-aos="fade-up">
+                                 <h1>IT Support or Management</h1>
+                                 <p>I can work as an IT Specialist in your company or business, to manage and build systems</p>
+                                 <div class="con">
+                                            <p>Want me work with you as IT?</p>
+                                            <button><a href="mailto:gabrielsamura9@gmail.com" style="color: wheat; text-decoration: none;">Hire Me</a></button>
+                                 </div>
+                      </div>
+                      <div class="software" data-aos="slide-up">
+                                 <h1>Software Engineering </h1>
+                                 <p>Anything relating software, I can be of help because of my skills and experience</p>
+                                 <div class="con">
+                                            <p>If need me</p>
+                                            <a href="tel:+23273287317">Call Me</a>
+                                 </div>
+                      </div>
+                      <div class="software" data-aos="slide-right">
+                                 <h1>Flyer Design</h1>
+                                 <p>I design stunning flyers for business, brand and more. I have basic knowledge  in advanced graphics</p>
+                                 <div class="con">
+                                            <p>If need a flyer</p>
+                                            <a href="tel:+23273287317">Call Me</a>
+                                 </div>
+                      </div>
+                      <div class="software" data-aos="zoom-in-left">
+                                 <h1>Phone Unlocking</h1>
+                                 <p>I unlock all type of phone lock, I can be of help with that if neeed</p>
+                                 <div class="con">
+                                            <p>If useful? </p>
+                                            <a href="tel:+23273287317">Call Me</a>
+                                 </div>
+                      </div>
+                      <div class="software" data-aos="zoom-in">
+                                 <h1>Database Management</h1>
+                                 <p>I organized, store and retrive data for brand, business and companies</p>
+                                 <div class="con">
+                                            <p>If needed? </p>
+                                            <a href="tel:+23273287317">Call Me</a>
+                                 </div>
+                      </div>
+           </div>
+           <div class="footer" data-aos="zoom-in-up">
+                      <p class="fo1">© Copyright <span>Gabriel Samura</span> All Rights Reserved</p>
+                      <div class="links" >
+                                 <a href="https://www.youtube.com/Zero_to_Programmer"><img src="YT_icon.png" alt="Youtube icon to follow my channel" title="Follow my channel"></a>
+                                 <a href="https://instagram.com/gibson_sam_programmer"><img src="IG_icon.png" alt="Instagram icon to chat with me" title="Chat with me on IG"></a>
+                                 <a href="https://www.linkedin.com/in/gabriel-samura"><img src="Linkedin_icon.png" alt="Linked icon to contact me" title="See more about me on Linkedin"></a>
+                                 <a href="tel:+23273287317"><img src="PH_icon.png" alt="Phone icon to call me" title="Feel free to call me anytime"></a>
+                      </div>
+                      <p class="fo3">Designed by <span>Gabriel Samura</span></p>
+           </div>
+           <script src="aos.js"></script>
+           <script>
+                      AOS.init({
+                                 duration: 1000,
+                                 once: false
+                      });
+                      let overflow_container = document.getElementById("menu");
+                      let click = false;
+                      function showMenu() {
+                                 click = !click;
+                                 if(click) {
+                                            console.log("Hello");
+                                            overflow_container.classList.add("show")
+                                            overflow_container.style.display = "flex"
+                                 }else {
+                                            console.log("Nope");
+                                            setTimeout(() => {
+                                                       overflow_container.style.display = "none"
+                                            }, 1)
+                                 }
+                      }
+           </script>
+</body>
+</html>
+<style>
+           @keyframes show {
+                      0% {
+                                 transform: scale(0.1);
+                      }
+                      100% {
+                                 transform: scale(1);
+                      }
+           }
+           @keyframes hide {
+                      0% {
+                                 transform: scale(1);
+                      }
+                      100% {
+                                 transform: scale(0.1);
+                      }
+           }
+           @keyframes bounce {
+                      0% {
+                                 transform: translateY(0px);
+                      }
+                      100% {
+                                 transform: translateY(10px);
+                      }
+           }
+           * {
+                      margin: 0;
+                      padding: 0;
+                      text-decoration: none;
+                      list-style: none;
+                      box-sizing: border-box;
+           }
+           html {
+                      scroll-behavior: smooth;
+           }
+           body {
+                      display: block;
+                      height: 100vh;
+                      background-color: rgb(35, 35, 35);
+                      position: relative;
+                      transition: .5s ease-in-out;
+           }
+           .nav-container {
+                      width: 100%;
+                      height: 30px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      padding-left: 5px;
+                      padding-right: 5px;
+                      position: sticky;
+                      top: 0;
+                      left: 0;
+                      z-index: 999;
+                      background-color: rgb(35, 35, 35);
+                      border-radius: 10px;
+                      box-shadow: 0px 2px 2px black;
+           }
+           .nav-container h1 a {
+                      text-decoration: none;
+                      color: whitesmoke;
+                      /* color: rgb(0, 0, 0); */
+                      font-family: Centaur;
+                      font-weight: bolder;
+                      text-shadow: 0px 1px 1px black;
+           }
+           .links a img {
+                      width: 25px;
+                      height: 25px;
+                      border-radius: 13px;
+                      box-shadow: 0px 1px 1px black;
+                      transition: .5s ease-in-out;
+                      cursor: pointer;
+                      &:hover {
+                                 transform: translateY(10px);
+                      }
+           }
+           .links img {
+                      width: 25px;
+                      height: 25px;
+                      margin-left: 10px;
+                      cursor: pointer;
+                      box-shadow: 0px 1px 1px black;
+           }
+           .overflow-container {
+                      position: absolute;
+                      width: 100%;
+                      height: 100vh;
+                      background: rgba(12, 100, 200, 0.2);
+                      overflow: hidden;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      display: none;
+                      transition: .5s ease-in-out;
+                      backdrop-filter: blur(10px);
+                      z-index: 9;
+           }
+           .overflow-container.show {
+                      animation: show 1s ease;
+           }
+           .overflow-container li{
+                      font-size: 25px;
+                      color: black;
+                      font-family: French Script MT;
+                      text-transform: capitalize;
+                      cursor: pointer;
+                      transition: all .5s ease;
+           }
+           .overflow-container li a {
+                      color: black;
+                      transition: all .5s ease;
+           }
+           .overflow-container li a:hover {
+                      color: rgb(0, 187, 255);
+           }
+           .overflow-container li:hover {
+                      transform: scale(1.2);
+           }
+           .info-for-about {
+                      width: 100%;
+                      height: 100px;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      color: white;
+           }
+           .info-for-about h1 {
+                      font-family: French Script MT;
+                      font-size: 50px;
+                      text-transform: capitalize;
+                      text-shadow: 0px 2px 2px rgb(255, 255, 255);
+           }
+           .info-for-about p {
+                      font-family: centaur;
+                      flex-wrap: wrap;
+                      color: white;
+                      font-weight: bold;
+           }
+           .services-container {
+                      display: grid;
+                      grid-template-columns: 300px 300px 300px;
+                      width: 100%;
+                      /* height: 400px; */
+                      background: linear-gradient(140deg, rgb(35, 35, 35), rgb(0, 0, 0));
+                      gap: 20px;
+                      align-items: center; justify-content: center;
+                      padding: 50px;
+           }
+           .web, .ITsupport, .software {
+                      width: 100%;
+                      height: 200px;
+                      background-color: rgb(18, 18, 18);
+                      border-radius: 10px;
+                      box-shadow: 0px 2px 2px black;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      cursor: pointer;
+           }
+           .web h1, .ITsupport h1, .software h1 {
+                      font-family: RANGE;
+                      color: black;
+                      text-shadow: 0px 1px 1px white;
+                      text-transform: uppercase;
+           }
+           .web p, .ITsupport p, .software p {
+                      font-family: centaur;
+                      color: wheat;
+           }
+           .con {
+                      width: 100%;
+                      display: flex;
+                      justify-content: space-between;
+                      margin: 40px;
+           }
+           .con button {
+                      width: 80px;
+                      border: none;
+                      background-color: transparent;
+                      box-shadow: 0px 1px 2px black;
+                      border-radius: 5px; 
+                      cursor: pointer;
+                      transition: .5s ease-in-out;
+                      &:hover {
+                                 color: white;
+                      }
+           }
+           .con a {
+                      text-decoration: none;
+                      color: lightblue;
+           }
+           @media screen and (max-width: 550px) {
+                      .services-container {
+                                 display: grid;
+                                 grid-template-columns: 1fr;
+                      }
+           }
+           @media screen and (max-width: 900px) {
+                      .services-container {
+                                 display: grid;
+                                 grid-template-columns: 1fr;
+                      }
+           }
+           .footer {
+                      width: 100%;
+                      display: block;
+                      background-color: rgb(38, 38, 38);
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      padding: 50px;
+                      gap: 20px;
+           }
+           .fo1, .fo3 {
+                      font-family: centaur;
+                      font-weight: bold;
+                      font-size: 14px;
+                      transition: .5s ease-in-out;
+                      animation: bounce 1s ease-in-out infinite;
+           }
+           .fo1 span, .fo3 span {
+                      transition: .5s ease-in-out;
+                      color: lightblue;
+                      text-shadow: 0px 1px 1px black;
+           }
+</style>

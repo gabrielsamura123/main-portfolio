@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Gabriel Page</title>
+           <link rel="stylesheet" href="aos.css">
+           <link rel="stylesheet" href="Portfolio_Website_2-home.css">
+           <link rel="shortcut icon" href="Gabriel Images/Edited.jpg">
+</head>
+<body>
+           <div class="nav-container">
+                      <h1><a href="#home">GABRIEL</a></h1>
+                      <div class="links" >
+                                 <a href="https://www.youtube.com/Zero_to_Programmer"><img src="YT_icon.png" alt="Youtube icon to follow my channel" title="Follow my channel"></a>
+                                 <a href="https://instagram.com/gibson_sam_programmer"><img src="IG_icon.png" alt="Instagram icon to chat with me" title="Chat with me on IG"></a>
+                                 <a href="https://www.linkedin.com/in/gabriel-samura"><img src="Linkedin_icon.png" alt="Linked icon to contact me" title="See more about me on Linkedin"></a>
+                                 <a href="tel:+23273287317"><img src="PH_icon.png" alt="Phone icon to call me" title="Feel free to call me anytime"></a>
+                                <img src="hamburger-menu.svg" alt="this is the image for the drop down menu" onclick="showMenu()">
+                      </div>
+           </div>
+           <div class="overflow-container" id="menu" data-aos="zoom-in-up">
+                      <li><a href="Portfolio_Website_2-about.html">🤵🏾About</a></li>
+                      <li><a href="Portfolio_Website_2-services.html">🧰Services</a></li>
+                      <li><a href="Portfolio_Website_2-projects.html">📽️Projects</a></li>
+           </div>
+           <div class="main-section" data-aos="zoom-in" id="home">
+                      <div class="style-back">
+                                 <h1 class="style-title">Gabriel Samura</h1>
+                                 <p class="style-content">I'm a professional full-stack web developer from <span>Sierra Leone</span></p>
+                                 <a href="Portfolio_Website_2-about.html" class="style-button"><button>About Me</button></a>
+                      </div>
+           </div>
+           <div class="footer" data-aos="zoom-in-up">
+                      <p class="fo1">© Copyright <span>Gabriel Samura</span> All Rights Reserved</p>
+                      <div class="links" >
+                                 <a href="https://www.youtube.com/Zero_to_Programmer"><img src="YT_icon.png" alt="Youtube icon to follow my channel" title="Follow my channel"></a>
+                                 <a href="https://instagram.com/gibson_sam_programmer"><img src="IG_icon.png" alt="Instagram icon to chat with me" title="Chat with me on IG"></a>
+                                 <a href="https://www.linkedin.com/in/gabriel-samura"><img src="Linkedin_icon.png" alt="Linked icon to contact me" title="See more about me on Linkedin"></a>
+                                 <a href="tel:+23273287317"><img src="PH_icon.png" alt="Phone icon to call me" title="Feel free to call me anytime"></a>
+                      </div>
+                      <p class="fo3">Designed by <span>Gabriel Samura</span></p>
+           </div>
+           <script src="aos.js"></script>
+           <script>
+                      AOS.init({
+                                 duration: 1000,
+                                 once: false
+                      });
+                      let overflow_container = document.getElementById("menu");
+                      let click = false;
+                      function showMenu() {
+                                 click = !click;
+                                 if(click) {
+                                            console.log("Hello");
+                                            overflow_container.classList.add("show")
+                                            overflow_container.style.display = "flex"
+                                 }else {
+                                            console.log("Nope");
+                                            setTimeout(() => {
+                                                       overflow_container.style.display = "none"
+                                            }, 1)
+                                 }
+                      }
+           </script>
+</body>
+</html>
