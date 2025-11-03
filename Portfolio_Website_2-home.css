@@ -60,7 +60,7 @@ body {
            font-family: "Manufacturing Consent", system-ui;
            font-weight: bolder;
            text-shadow: 0px 1px 1px black;
-           color: "lightskyblue;
+           color: black;
 }
 .links a img {
            width: 25px;
@@ -134,7 +134,6 @@ body {
            align-items: center;
            justify-content: center;
            flex-direction: column;
-           padding: 20px;
 }
 .style-title {
            font-family: Papyrus;
@@ -222,5 +221,6 @@ body {
                       font-family: "Manufacturing Consent";
            }
 }
+
 
 
