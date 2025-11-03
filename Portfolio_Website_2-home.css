@@ -134,6 +134,7 @@ body {
            align-items: center;
            justify-content: center;
            flex-direction: column;
+           padding: 20px;
 }
 .style-title {
            font-family: Papyrus;
@@ -146,6 +147,8 @@ body {
            font-family: centaur;
            font-size: 15px;
            color: white;
+           width: 50%;
+           text-align: center;
 }
 .style-content span {
            color: lightblue;
@@ -219,4 +222,5 @@ body {
                       font-family: "Manufacturing Consent";
            }
 }
+
 
