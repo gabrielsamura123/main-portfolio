@@ -1,0 +1,21 @@
+{
+  "name": "main-portfolio",
+  "version": "2.0.0",
+  "description": "Modern dark-themed portfolio for UI/UX Designer Sophia Williams",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve . -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielsamura123/main-portfolio.git"
+  },
+  "keywords": ["portfolio", "ui-ux", "framer", "designer", "tailwindcss"],
+  "author": "Gabriel Samura",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^4.3.5"
+  }
+}

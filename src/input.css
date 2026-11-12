@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-deep: #0b0f19;
+  --color-bg-card: #131b2e;
+  --color-border: #1e293b;
+  --color-accent: #06b6d4;
+  --color-accent-glow: #00f2fe;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-bg-deep text-text-primary font-sans antialiased;
+  }
+}
+
+@layer components {
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-2xl text-text-secondary hover:text-text-primary hover:bg-bg-card transition-all duration-300 cursor-pointer;
+  }
+  
+  .sidebar-link.active {
+    @apply text-accent bg-bg-card border border-accent/30;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 rounded-2xl bg-accent text-bg-deep font-semibold hover:bg-accent-glow hover:shadow-[0_0_20px_#06b6d4] transition-all duration-300 flex items-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 rounded-2xl border border-border text-text-primary hover:bg-bg-card hover:border-accent/50 transition-all duration-300 flex items-center gap-2;
+  }
+  
+  .card {
+    @apply bg-bg-card rounded-3xl border border-border p-6 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)];
+  }
+  
+  .stat-card {
+    @apply card text-center;
+  }
+  
+  .service-card {
+    @apply card flex items-center justify-between gap-4;
+  }
+  
+  .pricing-card {
+    @apply card relative flex flex-col h-full;
+  }
+  
+  .progress-bar {
+    @apply h-2 bg-border rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-accent rounded-full transition-all duration-1000 ease-out;
+  }
+  
+  .circular-progress {
+    @apply relative w-20 h-20;
+  }
+  
+  .circular-progress svg {
+    @apply w-full h-full -rotate-90;
+  }
+  
+  .circular-progress circle {
+    @apply fill-none stroke-border stroke-[8];
+  }
+  
+  .circular-progress .progress {
+    @apply stroke-accent transition-all duration-1000 ease-out;
+  }
+}
