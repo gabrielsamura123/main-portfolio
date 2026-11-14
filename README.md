@@ -50,6 +50,9 @@ main-portfolio/
 ├── tailwind.css        # Compiled Tailwind + custom styles
 ├── src/
 │   └── input.css       # Tailwind source, design tokens, components, responsive rules
+├── favicon.svg         # Scalable site icon
+├── favicon.ico         # Multi-size browser fallback icon
+├── apple-touch-icon.png
 ├── Gibson_11.JPG       # Hero portrait
 ├── aos.css / aos.js    # Used only by the legacy standalone pages
 ├── package.json
