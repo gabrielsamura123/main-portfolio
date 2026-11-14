@@ -1,19 +1,28 @@
 {
   "name": "main-portfolio",
   "version": "2.0.0",
-  "description": "Modern dark-themed portfolio for UI/UX Designer Sophia Williams",
+  "description": "Black liquid-glass portfolio for full-stack developer Gabriel Samura",
   "main": "index.html",
   "scripts": {
-    "dev": "npx serve . -p 3000"
+    "dev": "npx serve . -p 3000",
+    "build": "tailwindcss -i ./src/input.css -o ./tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./tailwind.css --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gabrielsamura123/main-portfolio.git"
   },
-  "keywords": ["portfolio", "ui-ux", "framer", "designer", "tailwindcss"],
+  "keywords": [
+    "portfolio",
+    "ui-ux",
+    "framer",
+    "designer",
+    "tailwindcss"
+  ],
   "author": "Gabriel Samura",
   "license": "MIT",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
     "autoprefixer": "^10.6.2",
     "postcss": "^8.5.32",
     "tailwindcss": "^4.3.5"

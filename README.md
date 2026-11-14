@@ -1,11 +1,12 @@
-# Sophia Williams - UI/UX Designer Portfolio
+# Gabriel Samura - Full-Stack Developer Portfolio
 
-A modern, dark-themed portfolio website built with Tailwind CSS featuring a dashboard-style layout with sticky sidebar navigation.
+A modern, black liquid-glass portfolio website built with Tailwind CSS featuring a dashboard-style layout with a floating glass sidebar and AOS scroll animations.
 
 ## Features
 
-- **Dark Theme**: Deep slate background (#0b0f19) with elevated cards (#131b2e)
-- **Electric Cyan Accents**: #06b6d4 / #00f2fe for primary actions and highlights
+- **Black Liquid Glass**: Pure black backdrop with frosted translucent panels and cyan/violet accents
+- **Local Tailwind Build**: Compiled `tailwind.css` (no CDN dependency)
+- **AOS Scroll Animations**: Section reveals powered by AOS
 - **Sticky Sidebar Navigation**: Profile card, navigation links, CTA buttons
 - **Hero Section**: Bold headline, portrait card with floating badge, social proof ticker
 - **Creative Toolkit**: Skills grid with progress bars + AI tools with circular progress rings
@@ -21,15 +22,15 @@ A modern, dark-themed portfolio website built with Tailwind CSS featuring a dash
 
 ## Quick Start
 
-### Development (CDN - No Build Required)
-Simply open `index.html` in a browser. Uses Tailwind CDN for instant preview.
+### Development
+Simply open `index.html` in a browser. It loads the committed `tailwind.css` build.
 
-### Production Build
+### Rebuild CSS
 ```bash
 npm install
 npm run build
 ```
-Outputs minified CSS to `dist/output.css`
+Outputs minified CSS to `tailwind.css`
 
 ### Local Development Server
 ```bash
@@ -40,12 +41,12 @@ Serves at http://localhost:3000
 ## Project Structure
 ```
 main-portfolio/
-├── index.html          # Main portfolio page (CDN version)
+├── index.html          # Main portfolio page
+├── tailwind.css        # Compiled Tailwind + custom glass styles
+├── aos.css / aos.js    # Scroll animation library
 ├── src/
 │   ├── input.css       # Tailwind source with custom theme
 │   └── main.js         # JS entry point
-├── dist/
-│   └── output.css      # Built CSS (after npm run build)
 ├── package.json
 └── README.md
 ```
@@ -56,12 +57,12 @@ main-portfolio/
 Edit `src/input.css` @theme section:
 ```css
 @theme {
-  --color-bg-deep: #0b0f19;
-  --color-bg-card: #131b2e;
-  --color-accent: #06b6d4;
-  --color-accent-glow: #00f2fe;
+  --color-bg-deep: #000000;
+  --color-bg-card: #0b0d12;
+  --color-accent: #38e8ff;
+  --color-accent-glow: #a78bfa;
   --color-text-primary: #ffffff;
-  --color-text-secondary: #9ca3af;
+  --color-text-secondary: #c3cad8;
 }
 ```
 
