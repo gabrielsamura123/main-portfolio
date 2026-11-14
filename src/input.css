@@ -920,9 +920,9 @@ body.cursor-down .cursor-ring {
   padding: 10px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   font-family: var(--display);
-  font-size: clamp(1.25rem, 5.2vw, 1.65rem);
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.76);
   opacity: 0;
   translate: 0 20px;
@@ -961,8 +961,95 @@ body.cursor-down .cursor-ring {
 }
 
 .mobile-email {
-  font-size: 0.9rem;
-  color: rgba(0, 212, 255, 0.8);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 42%, rgba(0, 212, 255, 0.06)),
+    rgba(8, 12, 20, 0.72);
+  box-shadow:
+    0 22px 38px -18px rgba(0, 0, 0, 0.95),
+    0 12px 26px -18px rgba(0, 212, 255, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transform: perspective(800px) rotateX(6deg) rotateY(-4deg);
+  transform-origin: center;
+  transition: transform 0.45s var(--spring), border-color 0.35s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.mobile-email::before {
+  content: "";
+  position: absolute;
+  inset: -60% -25%;
+  background: linear-gradient(115deg, transparent 38%, rgba(0, 212, 255, 0.2) 48%, rgba(139, 92, 246, 0.16) 54%, transparent 64%);
+  transform: translateX(-45%) rotate(8deg);
+  transition: transform 0.8s var(--ease);
+  pointer-events: none;
+}
+
+.mobile-email::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 18% 0%, rgba(0, 212, 255, 0.16), transparent 45%);
+  pointer-events: none;
+}
+
+.mobile-email-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(0, 212, 255, 0.25), rgba(139, 92, 246, 0.2));
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #9ceeff;
+}
+
+.mobile-email-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.mobile-email-address {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.mobile-email:hover,
+.mobile-email:focus-visible {
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateY(-3px) scale(1.01);
+  border-color: rgba(0, 212, 255, 0.34);
+  box-shadow:
+    0 28px 48px -18px rgba(0, 0, 0, 0.95),
+    0 18px 34px -20px rgba(0, 212, 255, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+}
+
+.mobile-email:hover::before {
+  transform: translateX(45%) rotate(8deg);
+}
+
+.mobile-email:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .mobile-socials {
