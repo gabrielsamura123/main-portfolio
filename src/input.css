@@ -1053,18 +1053,111 @@ body.cursor-down .cursor-ring {
 }
 
 .mobile-socials {
-  display: flex;
-  gap: 20px;
-  font-size: 0.85rem;
-  color: var(--muted);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
-.mobile-socials a {
+.mobile-social {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 76px;
+  padding: 11px 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 16px;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 42%, rgba(0, 212, 255, 0.06)),
+    rgba(8, 12, 20, 0.72);
+  box-shadow:
+    0 22px 38px -18px rgba(0, 0, 0, 0.95),
+    0 12px 26px -18px rgba(0, 212, 255, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.82);
+  transform: perspective(800px) rotateX(6deg) rotateY(var(--card-ry, 0deg));
+  transform-origin: center;
+  transition: transform 0.45s var(--spring), border-color 0.35s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.mobile-social:nth-child(1) { --card-ry: 4deg; }
+.mobile-social:nth-child(2) { --card-ry: 0deg; }
+.mobile-social:nth-child(3) { --card-ry: -4deg; }
+
+.mobile-social::before {
+  content: "";
+  position: absolute;
+  inset: -60% -25%;
+  background: linear-gradient(115deg, transparent 38%, rgba(0, 212, 255, 0.2) 48%, rgba(139, 92, 246, 0.16) 54%, transparent 64%);
+  transform: translateX(-45%) rotate(8deg);
+  transition: transform 0.8s var(--ease);
+  pointer-events: none;
+}
+
+.mobile-social::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 18% 0%, rgba(0, 212, 255, 0.16), transparent 45%);
+  pointer-events: none;
+}
+
+.mobile-social-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(0, 212, 255, 0.25), rgba(139, 92, 246, 0.2));
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #9ceeff;
+}
+
+.mobile-social-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.mobile-social-label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.72);
   transition: color 0.3s;
 }
 
-.mobile-socials a:hover {
-  color: var(--accent);
+.mobile-social:hover,
+.mobile-social:focus-visible {
+  transform: perspective(800px) rotateX(0deg) rotateY(0deg) translateY(-3px) scale(1.01);
+  border-color: rgba(0, 212, 255, 0.34);
+  box-shadow:
+    0 28px 48px -18px rgba(0, 0, 0, 0.95),
+    0 18px 34px -20px rgba(0, 212, 255, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+}
+
+.mobile-social:hover::before {
+  transform: translateX(45%) rotate(8deg);
+}
+
+.mobile-social:hover .mobile-social-label {
+  color: #fff;
+}
+
+.mobile-social:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* ============================================================
