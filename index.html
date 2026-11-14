@@ -53,7 +53,7 @@
         <a href="#works" class="nav-link" data-target="works" data-magnetic="4">Projects</a>
         <a href="#contact" class="nav-link" data-target="contact" data-magnetic="4">Contact</a>
       </nav>
-      <a href="#contact" class="nav-cta">Let's Talk</a>
+      <a href="#contact" class="nav-cta" data-contact-open>Let's Talk</a>
       <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
         <span></span><span></span>
       </button>
@@ -125,10 +125,17 @@
 
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="status-badge anim-badge">
-            <span class="status-dot"><span></span></span>
-            Available for freelance &amp; contract work
-          </span>
+          <div class="hero-status-row anim-badge">
+            <span class="status-badge">
+              <span class="status-dot status-dot-live" aria-hidden="true"><span></span></span>
+              Available for new projects <span class="status-sep" aria-hidden="true">&bull;</span> UTC+0
+            </span>
+            <span class="clock-badge" aria-label="Local time in Freetown, Sierra Leone">
+              <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2"/></svg>
+              <time class="clock-time" id="freetownTime" datetime="">--:-- --</time>
+              <span class="clock-label">Freetown</span>
+            </span>
+          </div>
 
           <p class="hero-eyebrow" aria-label="Hey There, I'm">
             <span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
@@ -143,7 +150,7 @@
           </p>
 
           <div class="hero-actions anim-cta">
-            <a href="#contact" class="btn btn-primary">
+            <a href="#contact" class="btn btn-primary" data-contact-open>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
               Hire Me
             </a>
@@ -174,7 +181,7 @@
               <img src="Gibson_11.JPG" alt="Portrait of Gabriel Samura" width="560" height="560" loading="eager">
               <div class="portrait-glass">
                 <span class="portrait-label">Open to work</span>
-                <a href="#contact" class="btn btn-primary btn-sm">
+                <a href="#contact" class="btn btn-primary btn-sm" data-contact-open>
                   Hire Me
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
                 </a>
@@ -213,7 +220,7 @@
               <span class="pill shimmer">TypeScript</span>
             </div>
 
-            <a href="#contact" class="link-arrow reveal" style="--reveal-delay:180ms">
+            <a href="#contact" class="link-arrow reveal" style="--reveal-delay:180ms" data-contact-open>
               Let's work together
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
             </a>
@@ -401,7 +408,7 @@
             </div>
             <h3>Full-Stack Web Development</h3>
             <p>Modern web applications built with Next.js, TypeScript, and PostgreSQL. From MVPs to production-scale systems with authentication, real-time features, and optimized performance.</p>
-            <a href="#contact" class="link-arrow">Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a href="#contact" class="link-arrow" data-contact-open>Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </article>
 
           <article class="glass service-card tilt reveal" style="--reveal-delay:90ms">
@@ -414,7 +421,7 @@
             </div>
             <h3>Mobile App Development (React Native)</h3>
             <p>Cross-platform iOS &amp; Android apps with native performance. Expo &amp; bare workflow, push notifications, offline-first architecture, App Store / Play Store deployment.</p>
-            <a href="#contact" class="link-arrow">Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a href="#contact" class="link-arrow" data-contact-open>Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </article>
 
           <article class="glass service-card tilt reveal" style="--reveal-delay:180ms">
@@ -427,7 +434,7 @@
             </div>
             <h3>Database Architecture &amp; APIs</h3>
             <p>PostgreSQL schema design, Prisma/Supabase, REST &amp; GraphQL APIs, real-time subscriptions, row-level security, migrations, and performance tuning.</p>
-            <a href="#contact" class="link-arrow">Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a href="#contact" class="link-arrow" data-contact-open>Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </article>
 
           <article class="glass service-card tilt reveal" style="--reveal-delay:270ms">
@@ -440,7 +447,7 @@
             </div>
             <h3>Enterprise / ERP Solutions</h3>
             <p>Custom business systems: inventory, HR, finance, CRM. Role-based access, audit trails, multi-tenancy, complex workflows, and integrations with existing infrastructure.</p>
-            <a href="#contact" class="link-arrow">Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a href="#contact" class="link-arrow" data-contact-open>Discuss Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
           </article>
         </div>
       </div>
@@ -471,7 +478,7 @@
               <div class="price-value">$5K&ndash;$25K<span>/project</span></div>
               <p class="price-note">2&ndash;8 week delivery</p>
             </div>
-            <a href="#contact" class="btn btn-primary btn-block">Start Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a href="#contact" class="btn btn-primary btn-block" data-contact-open>Start Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
             <ul class="feature-list">
               <li style="--i:0"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/></svg>Fixed timeline &amp; budget</li>
               <li style="--i:1"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/></svg>Detailed spec &amp; milestones</li>
@@ -494,7 +501,7 @@
               <div class="price-value">$3K&ndash;$8K<span>/month</span></div>
               <p class="price-note">3+ month commitment</p>
             </div>
-            <a href="#contact" class="btn btn-primary btn-block">Discuss Retainer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a href="#contact" class="btn btn-primary btn-block" data-contact-open>Discuss Retainer <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
             <ul class="feature-list">
               <li style="--i:0"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/></svg>Priority scheduling</li>
               <li style="--i:1"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/></svg>Ongoing maintenance &amp; features</li>
@@ -517,7 +524,7 @@
               <div class="price-value">$200&ndash;$400<span>/hour</span></div>
               <p class="price-note">Min 10 hrs/month</p>
             </div>
-            <a href="#contact" class="btn btn-ghost btn-block">Book Session <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+            <a href="#contact" class="btn btn-ghost btn-block" data-contact-open>Book Session <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
             <ul class="feature-list feature-list-violet">
               <li style="--i:0"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/></svg>Architecture reviews</li>
               <li style="--i:1"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/></svg>Tech stack decisions</li>
@@ -555,7 +562,7 @@
               </div>
               <h3>Fuel Management System</h3>
               <p>Complete fuel tracking &amp; fleet management platform with real-time tank monitoring, automated reconciliation, and multi-station dashboards. Built with Next.js, PostgreSQL, and Supabase real-time subscriptions.</p>
-              <a href="#" class="link-arrow">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+              <button type="button" class="link-arrow project-detail-open" aria-haspopup="dialog">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
             </div>
           </article>
 
@@ -573,7 +580,7 @@
               </div>
               <h3>DevMeet Platform</h3>
               <p>Developer community platform with real-time chat, event scheduling, job board, and mentorship matching. React Native mobile app with Expo, Next.js web, Supabase auth &amp; real-time.</p>
-              <a href="#" class="link-arrow">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+              <button type="button" class="link-arrow project-detail-open" aria-haspopup="dialog">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
             </div>
           </article>
 
@@ -591,7 +598,7 @@
               </div>
               <h3>Easy Ride</h3>
               <p>Ride-hailing app with driver/rider modes, real-time GPS tracking, in-app payments, ride scheduling, and admin fleet management. React Native (bare), Node.js backend, PostgreSQL, WebSocket tracking.</p>
-              <a href="#" class="link-arrow">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+              <button type="button" class="link-arrow project-detail-open" aria-haspopup="dialog">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
             </div>
           </article>
 
@@ -609,7 +616,7 @@
               </div>
               <h3>Fuel Management System (Enterprise)</h3>
               <p>Scaled multi-tenant ERP for fuel distribution networks: depot management, tanker scheduling, automated billing, regulatory compliance reporting, and role-based access across 50+ stations.</p>
-              <a href="#" class="link-arrow">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+              <button type="button" class="link-arrow project-detail-open" aria-haspopup="dialog">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
             </div>
           </article>
 
@@ -627,13 +634,13 @@
               </div>
               <h3>EDSA Management System</h3>
               <p>Electricity distribution management system for utility provider: customer billing, outage management, meter reading workflows, field crew dispatch, and regulatory reporting dashboards.</p>
-              <a href="#" class="link-arrow">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+              <button type="button" class="link-arrow project-detail-open" aria-haspopup="dialog">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></button>
             </div>
           </article>
         </div>
 
         <div class="works-cta reveal">
-          <a href="#contact" class="btn btn-primary">Discuss Your Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <a href="#contact" class="btn btn-primary" data-contact-open>Discuss Your Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
         </div>
       </div>
     </section>
@@ -656,7 +663,7 @@
         <h2 class="contact-title reveal reveal-scale" style="--reveal-delay:80ms">Ready to Build<br>Your Project?</h2>
         <p class="contact-sub reveal" style="--reveal-delay:160ms">Let's discuss your requirements and find the best engagement model for your needs.</p>
         <div class="contact-actions reveal" style="--reveal-delay:240ms">
-          <a href="mailto:gabrielsamura9@gmail.com" class="btn btn-primary btn-lg">
+          <a href="mailto:gabrielsamura9@gmail.com" class="btn btn-primary btn-lg" data-contact-open>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.9 5.3a2 2 0 0 0 2.2 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2Z"/></svg>
             Email Me
           </a>
@@ -707,6 +714,119 @@
   <button class="back-top glass" id="backTop" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m-6 6 6-6 6 6"/></svg>
   </button>
+
+  <!-- Contact form modal -->
+  <div class="contact-modal" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle" aria-hidden="true">
+    <div class="contact-modal-backdrop" data-modal-close></div>
+    <div class="contact-modal-panel">
+      <button class="modal-close" type="button" data-modal-close aria-label="Close contact form">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+
+      <header class="modal-head">
+        <span class="eyebrow">Start a project</span>
+        <h2 class="modal-title" id="contactModalTitle">Let's build something exceptional.</h2>
+        <p class="modal-sub">Share a few details and I'll get back to you within 24 hours.</p>
+      </header>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-grid">
+          <label class="form-field">
+            <span class="form-label">Name</span>
+            <input class="form-input" type="text" name="name" id="contactName" placeholder="Your name" autocomplete="name" required>
+          </label>
+          <label class="form-field">
+            <span class="form-label">Email</span>
+            <input class="form-input" type="email" name="email" id="contactEmail" placeholder="you@company.com" autocomplete="email" required>
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span class="form-label">Project type</span>
+          <span class="select-wrap">
+            <select class="form-input form-select" name="projectType" id="contactType" required>
+              <option value="" disabled selected>Select a project type</option>
+              <option value="Web App">Web App</option>
+              <option value="Mobile App">Mobile App</option>
+              <option value="Retainer">Retainer</option>
+              <option value="Advisory">Advisory</option>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+          </span>
+        </label>
+
+        <fieldset class="form-field form-fieldset">
+          <legend class="form-label">Budget range</legend>
+          <div class="choice-group">
+            <input class="choice-input" type="radio" name="budget" id="budgetSmall" value="Under $3k" required>
+            <label class="choice-pill" for="budgetSmall">&lt;$3k</label>
+            <input class="choice-input" type="radio" name="budget" id="budgetMid" value="$3k - $8k" required>
+            <label class="choice-pill" for="budgetMid">$3k - $8k</label>
+            <input class="choice-input" type="radio" name="budget" id="budgetLarge" value="$8k+" required>
+            <label class="choice-pill" for="budgetLarge">$8k+</label>
+          </div>
+        </fieldset>
+
+        <label class="form-field">
+          <span class="form-label">Message</span>
+          <textarea class="form-input form-textarea" name="message" id="contactMessage" rows="4" placeholder="Tell me about your project, goals, and timeline..." required minlength="10"></textarea>
+        </label>
+
+        <button class="btn btn-primary modal-submit" type="submit" id="contactSubmit">
+          <span class="submit-label">Send Message</span>
+          <span class="submit-spinner" aria-hidden="true"></span>
+          <span class="submit-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.2 4.2L19 7"/></svg>
+          </span>
+        </button>
+        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Project detail drawer -->
+  <div class="project-drawer" id="projectDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+    <div class="drawer-backdrop" data-drawer-close></div>
+    <aside class="drawer-panel">
+      <button class="drawer-close" type="button" data-drawer-close aria-label="Close project details">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+
+      <div class="drawer-scroll">
+        <span class="eyebrow drawer-eyebrow" id="drawerCategory">Project</span>
+        <h2 class="drawer-title" id="drawerTitle">Project details</h2>
+        <p class="drawer-desc" id="drawerDesc"></p>
+
+        <div class="drawer-preview" id="drawerPreview" role="img" aria-label="Project preview">
+          <span class="drawer-preview-glow" aria-hidden="true"></span>
+          <span class="drawer-preview-index" id="drawerIndex">01</span>
+          <div class="drawer-browser">
+            <div class="drawer-browser-bar">
+              <span></span><span></span><span></span>
+              <em id="drawerPreviewLabel">Project preview</em>
+            </div>
+            <div class="drawer-browser-screen" id="drawerPreviewIcon"></div>
+          </div>
+        </div>
+
+        <section class="drawer-section">
+          <h3 class="drawer-section-title">Technical highlights</h3>
+          <ul class="drawer-highlights" id="drawerHighlights"></ul>
+        </section>
+
+        <section class="drawer-section">
+          <h3 class="drawer-section-title">Tech stack</h3>
+          <div class="drawer-tags" id="drawerTags"></div>
+        </section>
+
+        <div class="drawer-actions">
+          <a href="#contact" class="btn btn-primary" id="drawerDemo">Live Demo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          <a href="https://github.com/gabrielsamura123" target="_blank" rel="noopener" class="btn btn-ghost" id="drawerSource">Source Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6m0-6L10 14M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg></a>
+        </div>
+        <p class="drawer-note">Some client work is private. Live demos are available on request.</p>
+      </div>
+    </aside>
+  </div>
 
   <script>
     (() => {
@@ -959,6 +1079,345 @@
         if (e.matches) setMobileNav(false);
       });
 
+      /* ---------------- Freetown clock ---------------- */
+      const clockEl = $('#freetownTime');
+      if (clockEl) {
+        const freetownFormatter = new Intl.DateTimeFormat('en-US', {
+          timeZone: 'Africa/Freetown',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true
+        });
+        const updateClock = () => {
+          const now = new Date();
+          clockEl.textContent = freetownFormatter.format(now);
+          clockEl.setAttribute('datetime', now.toISOString());
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
+      }
+
+      /* ---------------- Contact modal + project drawer ---------------- */
+      const contactModal = $('#contactModal');
+      const contactForm = $('#contactForm');
+      const contactSubmit = $('#contactSubmit');
+      const contactStatus = $('#contactStatus');
+      const projectDrawer = $('#projectDrawer');
+      const projectCards = $$('.project-card');
+
+      const projectDetails = [
+        {
+          highlights: [
+            'Real-time tank monitoring powered by Supabase subscriptions',
+            'Automated reconciliation across stations, shifts, and operators',
+            'Multi-station dashboards with role-based access controls',
+            'Audit-ready reporting and proactive fuel-loss alerts'
+          ],
+          stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Supabase', 'Tailwind CSS'],
+          demo: '',
+          source: 'https://github.com/gabrielsamura123'
+        },
+        {
+          highlights: [
+            'Real-time chat and community feeds across web and mobile',
+            'Event scheduling, RSVP flows, and attendee management',
+            'Job board with mentorship matching and discovery',
+            'Shared authentication and data layer with Supabase'
+          ],
+          stack: ['Next.js', 'React Native', 'Expo', 'Supabase', 'TypeScript'],
+          demo: '',
+          source: 'https://github.com/gabrielsamura123'
+        },
+        {
+          highlights: [
+            'Dedicated driver and rider modes with live GPS tracking',
+            'WebSocket-powered location updates and ride status',
+            'In-app payments, ride scheduling, and trip history',
+            'Admin fleet management, dispatch, and driver oversight'
+          ],
+          stack: ['React Native', 'Node.js', 'PostgreSQL', 'WebSockets', 'Maps'],
+          demo: '',
+          source: 'https://github.com/gabrielsamura123'
+        },
+        {
+          highlights: [
+            'Multi-tenant ERP spanning 50+ fuel distribution stations',
+            'Depot management, tanker scheduling, and inventory control',
+            'Automated billing plus regulatory compliance reporting',
+            'Granular permissions for operators and administrators'
+          ],
+          stack: ['Next.js', 'PostgreSQL', 'Supabase', 'TypeScript', 'Chart.js'],
+          demo: '',
+          source: 'https://github.com/gabrielsamura123'
+        },
+        {
+          highlights: [
+            'Customer billing and meter-reading workflows at utility scale',
+            'Outage management, crew dispatch, and restoration tracking',
+            'Regulatory reporting dashboards for operational teams',
+            'Role-based access across field, billing, and management teams'
+          ],
+          stack: ['Next.js', 'React', 'PostgreSQL', 'Node.js', 'Tailwind CSS'],
+          demo: '',
+          source: 'https://github.com/gabrielsamura123'
+        }
+      ];
+
+      let modalIsOpen = false;
+      let drawerIsOpen = false;
+      let modalReturnFocus = null;
+      let drawerReturnFocus = null;
+      let activeProjectTitle = '';
+      let contactSubmitTimer = null;
+
+      const syncOverlayLock = () => {
+        body.classList.toggle('overlay-open', modalIsOpen || drawerIsOpen);
+      };
+
+      const getFocusable = container => $$(
+        'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        container
+      );
+
+      const trapFocus = (container, event) => {
+        if (event.key !== 'Tab') return;
+        const focusable = getFocusable(container);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      };
+
+      const resetContactForm = () => {
+        if (!contactForm) return;
+        clearTimeout(contactSubmitTimer);
+        contactForm.reset();
+        contactForm.classList.remove('was-submitted');
+        if (contactSubmit) {
+          contactSubmit.disabled = false;
+          contactSubmit.classList.remove('is-loading', 'is-success');
+          contactSubmit.removeAttribute('aria-busy');
+        }
+        if (contactStatus) {
+          contactStatus.textContent = '';
+          contactStatus.classList.remove('is-visible');
+        }
+      };
+
+      const closeContactModal = ({ restoreFocus = true } = {}) => {
+        if (!contactModal || !modalIsOpen) return;
+        contactModal.classList.remove('is-open');
+        contactModal.setAttribute('aria-hidden', 'true');
+        modalIsOpen = false;
+        syncOverlayLock();
+        if (contactSubmit && contactSubmit.classList.contains('is-loading')) {
+          resetContactForm();
+        } else if (contactSubmit && contactSubmit.classList.contains('is-success')) {
+          setTimeout(() => {
+            if (!modalIsOpen) resetContactForm();
+          }, reduceMotion ? 0 : 300);
+        }
+        if (restoreFocus && modalReturnFocus && document.contains(modalReturnFocus)) {
+          setTimeout(() => modalReturnFocus.focus(), reduceMotion ? 0 : 90);
+        }
+      };
+
+      const closeProjectDrawer = ({ restoreFocus = true } = {}) => {
+        if (!projectDrawer || !drawerIsOpen) return;
+        projectDrawer.classList.remove('is-open');
+        projectDrawer.setAttribute('aria-hidden', 'true');
+        drawerIsOpen = false;
+        syncOverlayLock();
+        if (restoreFocus && drawerReturnFocus && document.contains(drawerReturnFocus)) {
+          setTimeout(() => drawerReturnFocus.focus(), reduceMotion ? 0 : 90);
+        }
+      };
+
+      const openContactModal = (prefill = '', focusReturn = null) => {
+        if (!contactModal) return;
+        if (drawerIsOpen) closeProjectDrawer({ restoreFocus: false });
+        setMobileNav(false);
+        if (contactSubmit && contactSubmit.classList.contains('is-success')) resetContactForm();
+        modalReturnFocus = focusReturn || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
+        contactModal.classList.add('is-open');
+        contactModal.setAttribute('aria-hidden', 'false');
+        modalIsOpen = true;
+        syncOverlayLock();
+        if (prefill) {
+          const message = $('#contactMessage');
+          if (message) message.value = prefill;
+        }
+        setTimeout(() => {
+          const target = prefill ? $('#contactMessage') : $('#contactName');
+          if (target) target.focus();
+        }, reduceMotion ? 20 : 180);
+      };
+
+      const openProjectDrawer = (index, trigger) => {
+        const card = projectCards[index];
+        if (!projectDrawer || !card) return;
+        if (modalIsOpen) closeContactModal({ restoreFocus: false });
+
+        const data = projectDetails[index] || { highlights: [], stack: [], source: 'https://github.com/gabrielsamura123' };
+        const title = $('h3', card)?.textContent.trim() || 'Project';
+        const category = $$('.project-tags .tag', card).map(tag => tag.textContent.trim()).join(' • ');
+        const description = $('.project-body > p', card)?.textContent.trim() || '';
+        const accent = getComputedStyle(card).getPropertyValue('--pc').trim() || '#00d4ff';
+        const indexLabel = $('.project-index', card)?.textContent.trim() || String(index + 1).padStart(2, '0');
+
+        activeProjectTitle = title;
+        drawerReturnFocus = trigger || document.activeElement;
+        projectDrawer.style.setProperty('--pc', accent);
+        $('#drawerCategory').textContent = category || 'Selected project';
+        $('#drawerTitle').textContent = title;
+        $('#drawerDesc').textContent = description;
+        $('#drawerIndex').textContent = indexLabel;
+        $('#drawerPreviewLabel').textContent = title;
+        $('#drawerPreview').setAttribute('aria-label', `${title} interface preview`);
+
+        const iconHost = $('#drawerPreviewIcon');
+        iconHost.innerHTML = '';
+        const icon = $('.project-icon', card);
+        if (icon) {
+          const clone = icon.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          iconHost.appendChild(clone);
+        }
+
+        const highlights = $('#drawerHighlights');
+        highlights.innerHTML = '';
+        data.highlights.forEach(text => {
+          const li = document.createElement('li');
+          li.textContent = text;
+          highlights.appendChild(li);
+        });
+
+        const tags = $('#drawerTags');
+        tags.innerHTML = '';
+        data.stack.forEach(text => {
+          const span = document.createElement('span');
+          span.textContent = text;
+          tags.appendChild(span);
+        });
+
+        const source = $('#drawerSource');
+        if (source) source.href = data.source || 'https://github.com/gabrielsamura123';
+
+        const demo = $('#drawerDemo');
+        if (demo) demo.dataset.demoUrl = data.demo || '';
+
+        projectDrawer.classList.add('is-open');
+        projectDrawer.setAttribute('aria-hidden', 'false');
+        drawerIsOpen = true;
+        syncOverlayLock();
+
+        const scrollArea = $('.drawer-scroll', projectDrawer);
+        if (scrollArea) scrollArea.scrollTop = 0;
+        setTimeout(() => $('.drawer-close', projectDrawer)?.focus(), reduceMotion ? 20 : 220);
+      };
+
+      $$('[data-contact-open]').forEach(trigger => {
+        trigger.addEventListener('click', event => {
+          event.preventDefault();
+          openContactModal();
+        });
+      });
+
+      $$('[data-modal-close]').forEach(trigger => {
+        trigger.addEventListener('click', () => closeContactModal());
+      });
+
+      $$('[data-drawer-close]').forEach(trigger => {
+        trigger.addEventListener('click', () => closeProjectDrawer());
+      });
+
+      $$('.project-detail-open').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const card = trigger.closest('.project-card');
+          openProjectDrawer(projectCards.indexOf(card), trigger);
+        });
+      });
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', event => {
+          event.preventDefault();
+          if (!contactForm.checkValidity()) {
+            contactForm.classList.add('was-submitted');
+            contactForm.reportValidity();
+            return;
+          }
+
+          contactForm.classList.remove('was-submitted');
+          if (!contactSubmit) return;
+          contactSubmit.disabled = true;
+          contactSubmit.setAttribute('aria-busy', 'true');
+          contactSubmit.classList.add('is-loading');
+          if (contactStatus) {
+            contactStatus.textContent = '';
+            contactStatus.classList.remove('is-visible');
+          }
+
+          contactSubmitTimer = setTimeout(() => {
+            contactSubmit.classList.remove('is-loading');
+            contactSubmit.classList.add('is-success');
+            contactSubmit.removeAttribute('aria-busy');
+            if (contactStatus) {
+              contactStatus.textContent = 'Message received. I will get back to you within 24 hours.';
+              contactStatus.classList.add('is-visible');
+            }
+          }, reduceMotion ? 250 : 1500);
+        });
+
+        contactForm.addEventListener('input', () => {
+          if (contactForm.classList.contains('was-submitted') && contactForm.checkValidity()) {
+            contactForm.classList.remove('was-submitted');
+          }
+        });
+      }
+
+      const drawerDemo = $('#drawerDemo');
+      if (drawerDemo) {
+        drawerDemo.addEventListener('click', event => {
+          event.preventDefault();
+          if (drawerDemo.dataset.demoUrl) {
+            window.open(drawerDemo.dataset.demoUrl, '_blank', 'noopener');
+            return;
+          }
+          const returnFocus = drawerReturnFocus;
+          const title = activeProjectTitle || 'this project';
+          closeProjectDrawer({ restoreFocus: false });
+          setTimeout(() => {
+            openContactModal(
+              `I'd like a live demo of ${title}. Please share access details and availability.`,
+              returnFocus
+            );
+          }, reduceMotion ? 0 : 140);
+        });
+      }
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          if (modalIsOpen) {
+            closeContactModal();
+            return;
+          }
+          if (drawerIsOpen) {
+            closeProjectDrawer();
+            return;
+          }
+        }
+        if (event.key === 'Tab') {
+          if (modalIsOpen) trapFocus(contactModal, event);
+          else if (drawerIsOpen) trapFocus(projectDrawer, event);
+        }
+      });
+
       /* ---------------- Magnetic hover ---------------- */
       if (finePointer && !reduceMotion) {
         $$('[data-magnetic]').forEach(el => {
@@ -1016,7 +1475,7 @@
           dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
           body.classList.add('cursor-visible');
 
-          const hovering = !!e.target.closest('a, button, .tilt, [data-magnetic], input, textarea, select');
+          const hovering = !!e.target.closest('a, button, .tilt, [data-magnetic], input, textarea, select, .choice-pill');
           body.classList.toggle('cursor-hover', hovering);
         }, { passive: true });
 

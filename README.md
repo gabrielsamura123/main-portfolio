@@ -7,13 +7,13 @@ An immersive black liquid-glass portfolio built with Tailwind CSS. The site uses
 - **Black Liquid Glass**: Pure black backdrop with frosted translucent panels, cyan/violet accents, and soft ambient gradients
 - **Local Tailwind Build**: Compiled `tailwind.css` with no CDN dependency
 - **Floating Glass Navbar**: Sliding active pill, shrink-on-scroll behavior, magnetic hover, and full-screen mobile menu
-- **Cinematic Hero**: Typewriter intro, gradient clip-reveal name, animated portrait ring, floating glass chips, particles, and scroll cue
+- **Cinematic Hero**: Typewriter intro, gradient clip-reveal name, animated portrait ring, live Freetown clock, availability status, floating glass chips, particles, and scroll cue
 - **Custom Interactions**: 12px cursor dot with trailing ring, button ripples, card spotlight, and magnetic social links
 - **Animated Toolkit**: Progress bars and circular skill rings triggered by IntersectionObserver
 - **Bio & Stats**: Animated counters for projects, experience, clients, and retention
 - **Services & Pricing**: 3D tilt service cards plus fixed-scope, retainer, and advisory engagement models
-- **Project Showcase**: Five project cards with alternating layouts and a swipeable mobile carousel
-- **Contact Section**: Ambient blobs, orbit lines, reduced-motion support, and direct email/LinkedIn actions
+- **Project Showcase**: Five project cards with alternating layouts, a swipeable mobile carousel, and a slide-over detail drawer with highlights, tech stack, and project CTAs
+- **Contact Section**: Ambient blobs, orbit lines, reduced-motion support, direct email/LinkedIn actions, and a glass project inquiry modal with validated fields and success states
 - **Fully Responsive**: Tuned layouts from 390px through 1920px with zero horizontal overflow
 - **Accessible Motion**: Complete `prefers-reduced-motion` fallback for all animations
 
@@ -83,6 +83,12 @@ Update the sections in `index.html`:
 - Services and engagement models
 - Project cards, descriptions, and tags
 - Contact and social links
+
+### Contact Form
+The inquiry modal validates fields client-side and simulates a successful submission. Connect a form service or backend endpoint in the `contactForm` submit handler in `index.html` to deliver messages.
+
+### Project Drawer Data
+Project details live in the `projectDetails` array in `index.html`. Add project-specific demo URLs or source links there; live demos without a public URL open a prefilled inquiry in the contact modal.
 
 ### Fonts
 Uses Inter (UI) and Space Grotesk (display) from Google Fonts. Change the `<link>` tags in `<head>`.
