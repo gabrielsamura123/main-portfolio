@@ -1773,6 +1773,8 @@ body.is-ready .portrait-wrap {
 .tool-icon-cyan { color: #67e8f9; background: rgba(34, 211, 238, 0.09); }
 .tool-icon-blue { color: #60a5fa; background: rgba(59, 130, 246, 0.09); }
 .tool-icon-green { color: #4ade80; background: rgba(34, 197, 94, 0.09); }
+.tool-icon-yellow { color: #facc15; background: rgba(250, 204, 21, 0.09); }
+.tool-icon-orange { color: #fb923c; background: rgba(249, 115, 22, 0.09); }
 
 .tool-meta h3 {
   font-family: var(--display);
@@ -3026,6 +3028,11 @@ body.is-ready .portrait-wrap {
   animation: checkPop 0.45s var(--spring);
 }
 
+.modal-submit.is-error {
+  border-color: rgba(248, 113, 113, 0.7);
+  box-shadow: 0 0 32px rgba(248, 113, 113, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
 .form-status {
   min-height: 18px;
   margin-top: 11px;
@@ -3041,6 +3048,10 @@ body.is-ready .portrait-wrap {
 .form-status.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.form-status.is-error {
+  color: #fca5a5;
 }
 
 /* ---------- Project drawer ---------- */
