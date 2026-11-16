@@ -1200,6 +1200,197 @@ button.link-arrow {
 }
 
 /* ============================================================
+   MOBILE LIQUID-GLASS TAB BAR
+   ============================================================ */
+.mobile-tabbar {
+  position: fixed;
+  left: 50%;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: 110;
+  display: none;
+  width: min(calc(100vw - 24px), 430px);
+  transform: translateX(-50%);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tabbar-surface {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: 8px 10px 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(12, 12, 12, 0.65);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.12),
+    0 20px 40px rgba(0, 0, 0, 0.55);
+  transform:
+    translate3d(var(--bar-x, 0px), var(--bar-y, 0px), 0)
+    rotate(var(--bar-r, 0deg))
+    scale(var(--bar-s, 1));
+  transform-origin: center bottom;
+  transition:
+    transform 0.55s var(--spring),
+    box-shadow 0.4s var(--ease),
+    background 0.4s var(--ease);
+  will-change: transform;
+}
+
+.tabbar-surface::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.11), transparent 42%),
+    radial-gradient(120% 90% at 18% -20%, rgba(255, 255, 255, 0.16), transparent 62%);
+  pointer-events: none;
+}
+
+.tabbar-surface::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 9%;
+  right: 9%;
+  z-index: 4;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.48), transparent);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.tabbar-surface.is-grabbed {
+  background: rgba(15, 15, 15, 0.78);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.17),
+    0 30px 58px rgba(0, 0, 0, 0.68);
+}
+
+.tabbar-surface.is-dragging {
+  transition: none;
+}
+
+.tabbar-pill {
+  position: absolute;
+  top: 8px;
+  bottom: 12px;
+  left: 0;
+  z-index: 1;
+  width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.055));
+  box-shadow:
+    0 10px 24px -12px rgba(0, 0, 0, 0.95),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.36);
+  transition:
+    transform 0.55s var(--spring),
+    width 0.35s var(--ease),
+    opacity 0.25s;
+  will-change: transform;
+}
+
+.tabbar-surface.is-pill-dragging .tabbar-pill {
+  transition: none;
+}
+
+.tabbar-item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 6px 0 0;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 8.5px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  transform: scale(1);
+  transition:
+    color 0.3s var(--ease),
+    transform 0.28s var(--spring);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tabbar-icon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+}
+
+.tabbar-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.tabbar-label {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: transform 0.3s var(--ease);
+}
+
+.tabbar-item.is-active {
+  color: #ffffff;
+}
+
+.tabbar-item.is-active .tabbar-label {
+  transform: translateY(-0.5px);
+}
+
+.tabbar-item:active,
+.tabbar-item.is-pressed {
+  transform: scale(0.94);
+}
+
+.tabbar-item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.45);
+  outline-offset: -4px;
+}
+
+.tabbar-indicator {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  z-index: 3;
+  width: 34px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.12);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabbar-surface,
+  .tabbar-pill,
+  .tabbar-item,
+  .tabbar-label {
+    transition-duration: 0.01ms;
+  }
+}
+
+/* ============================================================
    HERO
    ============================================================ */
 .hero {
@@ -3731,23 +3922,6 @@ body.is-ready .portrait-wrap {
     min-height: 190px;
   }
 
-  .nav-menu,
-  .nav-cta {
-    display: none;
-  }
-
-  .nav-toggle {
-    display: grid;
-  }
-
-  .nav-shell {
-    justify-content: space-between;
-  }
-
-  .nav-brand {
-    margin-right: auto;
-  }
-
   .contact-title {
     font-size: clamp(2.7rem, 9vw, 5rem);
   }
@@ -3755,25 +3929,20 @@ body.is-ready .portrait-wrap {
 
 @media (max-width: 767px) {
   html {
-    scroll-padding-top: 92px;
+    scroll-padding-top: 24px;
+    scroll-padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px));
+  }
+
+  body {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom, 0px));
   }
 
   .site-header {
-    top: 12px;
-    padding-inline: 12px;
+    display: none;
   }
 
-  .site-header.is-shrunk {
-    top: 8px;
-  }
-
-  .nav-shell {
-    padding: 6px 7px 6px 8px;
-  }
-
-  .brand-mark {
-    width: 36px;
-    height: 36px;
+  .mobile-tabbar {
+    display: block;
   }
 
   .hero {

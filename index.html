@@ -54,63 +54,63 @@
         <a href="#contact" class="nav-link" data-target="contact" data-magnetic="4">Contact</a>
       </nav>
       <a href="#contact" class="nav-cta" data-contact-open>Let's Talk</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-        <span></span><span></span>
-      </button>
     </div>
   </header>
 
-  <!-- Mobile full-screen nav -->
-  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
-    <div class="mobile-nav-inner">
-      <p class="mobile-eyebrow">Navigation</p>
-      <nav class="mobile-menu" aria-label="Mobile navigation">
-        <a href="#home" class="mobile-link">Home</a>
-        <a href="#about" class="mobile-link">About</a>
-        <a href="#services" class="mobile-link">Services</a>
-        <a href="#packages" class="mobile-link">Packages</a>
-        <a href="#works" class="mobile-link">Projects</a>
-        <a href="#contact" class="mobile-link">Contact</a>
-      </nav>
-      <div class="mobile-foot">
-        <a href="mailto:gabrielsamura9@gmail.com" class="mobile-email">
-          <span class="mobile-email-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
-              <path d="m3.5 7 8.5 6 8.5-6"></path>
-            </svg>
-          </span>
-          <span class="mobile-email-address">gabrielsamura9@gmail.com</span>
-        </a>
-        <div class="mobile-socials">
-          <a href="https://github.com/gabrielsamura123" class="mobile-social" target="_blank" rel="noopener" aria-label="GitHub">
-            <span class="mobile-social-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
-              </svg>
-            </span>
-            <span class="mobile-social-label">GitHub</span>
-          </a>
-          <a href="https://linkedin.com/in/gabriel-samura-57b24431a" class="mobile-social" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <span class="mobile-social-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.119 20.452H3.555V9h3.564v11.452z"></path>
-              </svg>
-            </span>
-            <span class="mobile-social-label">LinkedIn</span>
-          </a>
-          <a href="https://twitter.com/gibson_sam_programmer" class="mobile-social" target="_blank" rel="noopener" aria-label="X (Twitter)">
-            <span class="mobile-social-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"></path>
-              </svg>
-            </span>
-            <span class="mobile-social-label">X</span>
-          </a>
-        </div>
-      </div>
+  <!-- Mobile floating liquid-glass tab bar -->
+  <nav class="mobile-tabbar" id="mobileTabbar" aria-label="Mobile navigation">
+    <div class="tabbar-surface" id="tabbarSurface">
+      <span class="tabbar-pill" id="tabbarPill" aria-hidden="true"></span>
+      <a href="#home" class="tabbar-item is-active" data-target="home" aria-current="page">
+        <span class="tabbar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.5 10.5 12 3l8.5 7.5"></path>
+            <path d="M5.5 9.5V21h13V9.5"></path>
+            <path d="M9.5 21v-6h5v6"></path>
+          </svg>
+        </span>
+        <span class="tabbar-label">Home</span>
+      </a>
+      <a href="#about" class="tabbar-item" data-target="about">
+        <span class="tabbar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="7.8" r="3.6"></circle>
+            <path d="M5 20c.8-3.4 3.5-5.2 7-5.2s6.2 1.8 7 5.2"></path>
+          </svg>
+        </span>
+        <span class="tabbar-label">About</span>
+      </a>
+      <a href="#services" class="tabbar-item" data-target="services">
+        <span class="tabbar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="7.5" width="18" height="13" rx="3"></rect>
+            <path d="M8.5 7.5V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v1.5"></path>
+            <path d="M3 12h18"></path>
+            <path d="M10.5 12v2h3v-2"></path>
+          </svg>
+        </span>
+        <span class="tabbar-label">Services</span>
+      </a>
+      <a href="#works" class="tabbar-item" data-target="works">
+        <span class="tabbar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.5 8A2.5 2.5 0 0 1 6 5.5h4l2 2.5h6A2.5 2.5 0 0 1 20.5 10.5v7A2.5 2.5 0 0 1 18 20H6a2.5 2.5 0 0 1-2.5-2.5Z"></path>
+          </svg>
+        </span>
+        <span class="tabbar-label">Projects</span>
+      </a>
+      <a href="#contact" class="tabbar-item" data-target="contact">
+        <span class="tabbar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5.5" width="18" height="13" rx="3"></rect>
+            <path d="m4 8 8 5.5L20 8"></path>
+          </svg>
+        </span>
+        <span class="tabbar-label">Contact</span>
+      </a>
+      <span class="tabbar-indicator" aria-hidden="true"></span>
     </div>
-  </div>
+  </nav>
 
   <main>
     <!-- ============================ HERO ============================ -->
@@ -1056,6 +1056,10 @@
       const header = $('#siteHeader');
       const navLinks = $$('.nav-link');
       const navPill = $('#navPill');
+      const tabBar = $('#mobileTabbar');
+      const tabSurface = $('#tabbarSurface');
+      const tabPill = $('#tabbarPill');
+      const tabItems = $$('.tabbar-item');
       const sections = $$('section[id]');
       const activeMap = {
         home: 'home',
@@ -1067,13 +1071,49 @@
         contact: 'contact',
         support: 'contact'
       };
+      const tabClamp = (value, min, max) => Math.min(max, Math.max(min, value));
       let activeTarget = '';
+      let tabScrollLock = '';
+      let tabScrollLockUntil = 0;
+      const tabGesture = {
+        pointerId: null,
+        mode: null,
+        startX: 0,
+        startY: 0,
+        lastIndex: 0,
+        longPress: 0,
+        suppressClick: false
+      };
+
+      const haptic = ms => {
+        if (reduceMotion || typeof navigator.vibrate !== 'function') return;
+        try { navigator.vibrate(ms); } catch (err) {}
+      };
 
       const positionPill = () => {
         const active = navLinks.find(link => link.classList.contains('is-active'));
         if (!active || !navPill) return;
         navPill.style.width = active.offsetWidth + 'px';
         navPill.style.transform = `translateX(${active.offsetLeft}px)`;
+      };
+
+      const positionTabPill = () => {
+        if (!tabPill || !tabBar || !tabBar.getClientRects().length) return;
+        const active = tabItems.find(item => item.classList.contains('is-active'));
+        if (!active) return;
+        tabPill.style.width = active.offsetWidth + 'px';
+        tabPill.style.transform = `translate3d(${active.offsetLeft}px, 0, 0)`;
+      };
+
+      const scrollToSection = target => {
+        const section = document.getElementById(target);
+        if (!section) return;
+        tabScrollLock = target;
+        tabScrollLockUntil = performance.now() + 1200;
+        section.scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
       };
 
       const setActive = target => {
@@ -1084,7 +1124,13 @@
           link.classList.toggle('is-active', on);
           link.setAttribute('aria-current', on ? 'page' : 'false');
         });
+        tabItems.forEach(item => {
+          const on = item.dataset.target === target;
+          item.classList.toggle('is-active', on);
+          item.setAttribute('aria-current', on ? 'page' : 'false');
+        });
         positionPill();
+        if (tabGesture.mode !== 'pill') positionTabPill();
       };
 
       const backTop = $('#backTop');
@@ -1108,7 +1154,12 @@
         sections.forEach(section => {
           if (section.getBoundingClientRect().top <= 170) current = section.id;
         });
-        setActive(activeMap[current] || current);
+        if (tabScrollLock) {
+          const lockSection = document.getElementById(tabScrollLock);
+          const reached = lockSection && Math.abs(lockSection.getBoundingClientRect().top - 24) < 8;
+          if (reached || performance.now() > tabScrollLockUntil) tabScrollLock = '';
+        }
+        if (!tabScrollLock) setActive(activeMap[current] || current);
 
         if (!reduceMotion) {
           parallaxEls.forEach(el => {
@@ -1128,44 +1179,189 @@
       window.addEventListener('scroll', requestScroll, { passive: true });
       window.addEventListener('resize', () => {
         positionPill();
+        positionTabPill();
         requestScroll();
       });
 
       if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(positionPill);
+        document.fonts.ready.then(() => {
+          positionPill();
+          positionTabPill();
+        });
       }
-      setTimeout(positionPill, 300);
+      setTimeout(() => {
+        positionPill();
+        positionTabPill();
+      }, 300);
       onScroll();
 
       backTop.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
       });
 
-      /* ---------------- Mobile nav ---------------- */
-      const navToggle = $('#navToggle');
-      const mobileNav = $('#mobileNav');
+      /* ---------------- Mobile tab bar gestures ---------------- */
+      if (tabBar && tabSurface && tabPill) {
+        const clearTabLongPress = () => {
+          if (!tabGesture.longPress) return;
+          clearTimeout(tabGesture.longPress);
+          tabGesture.longPress = 0;
+        };
 
-      const setMobileNav = open => {
-        body.classList.toggle('menu-open', open);
-        mobileNav.classList.toggle('is-open', open);
-        navToggle.classList.toggle('is-open', open);
-        navToggle.setAttribute('aria-expanded', String(open));
-        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        mobileNav.setAttribute('aria-hidden', String(!open));
-      };
+        const tabIndexAt = clientX => {
+          const rect = tabSurface.getBoundingClientRect();
+          const x = clientX - rect.left;
+          let nearest = 0;
+          let nearestDistance = Infinity;
+          tabItems.forEach((item, index) => {
+            const center = item.offsetLeft + item.offsetWidth / 2;
+            const distance = Math.abs(x - center);
+            if (distance < nearestDistance) {
+              nearestDistance = distance;
+              nearest = index;
+            }
+          });
+          return nearest;
+        };
 
-      navToggle.addEventListener('click', () => {
-        setMobileNav(!mobileNav.classList.contains('is-open'));
-      });
-      $$('.mobile-link, .mobile-foot a').forEach(link => {
-        link.addEventListener('click', () => setMobileNav(false));
-      });
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') setMobileNav(false);
-      });
-      window.matchMedia('(min-width: 821px)').addEventListener('change', e => {
-        if (e.matches) setMobileNav(false);
-      });
+        const activateTabIndex = index => {
+          const item = tabItems[index];
+          if (!item) return;
+          const changed = item.dataset.target !== activeTarget;
+          setActive(item.dataset.target);
+          if (!changed) return;
+          scrollToSection(item.dataset.target);
+          haptic(10);
+        };
+
+        const onTabPointerDown = event => {
+          if (event.pointerType === 'mouse' && event.button !== 0) return;
+          if (tabGesture.pointerId !== null) return;
+          tabGesture.pointerId = event.pointerId;
+          tabGesture.mode = null;
+          tabGesture.startX = event.clientX;
+          tabGesture.startY = event.clientY;
+          tabGesture.lastIndex = Math.max(0, tabItems.findIndex(item => item.classList.contains('is-active')));
+          tabGesture.suppressClick = false;
+          clearTabLongPress();
+          tabGesture.longPress = window.setTimeout(() => {
+            if (tabGesture.pointerId !== event.pointerId || tabGesture.mode) return;
+            tabGesture.mode = 'bar';
+            tabGesture.suppressClick = true;
+            try { tabSurface.setPointerCapture(event.pointerId); } catch (err) {}
+            tabSurface.classList.add('is-grabbed', 'is-dragging');
+            haptic(6);
+          }, 320);
+        };
+
+        const onTabPointerMove = event => {
+          if (event.pointerId !== tabGesture.pointerId) return;
+          const dx = event.clientX - tabGesture.startX;
+          const dy = event.clientY - tabGesture.startY;
+
+          if (!tabGesture.mode) {
+            if (Math.hypot(dx, dy) <= 6) return;
+            clearTabLongPress();
+            tabGesture.suppressClick = true;
+            tabGesture.mode = Math.abs(dx) > Math.abs(dy) ? 'pill' : 'ignored';
+            try { tabSurface.setPointerCapture(event.pointerId); } catch (err) {}
+            if (tabGesture.mode === 'pill') {
+              tabSurface.classList.add('is-pill-dragging');
+            } else {
+              return;
+            }
+          }
+
+          if (tabGesture.mode === 'pill') {
+            event.preventDefault();
+            const index = tabIndexAt(event.clientX);
+            if (index !== tabGesture.lastIndex) {
+              tabGesture.lastIndex = index;
+              activateTabIndex(index);
+            }
+
+            const active = tabItems.find(item => item.classList.contains('is-active'));
+            if (!active) return;
+            const rect = tabSurface.getBoundingClientRect();
+            const minX = tabItems[0].offsetLeft;
+            const maxX = tabItems[tabItems.length - 1].offsetLeft;
+            const x = tabClamp(
+              event.clientX - rect.left - active.offsetWidth / 2,
+              minX,
+              maxX
+            );
+            tabPill.style.width = active.offsetWidth + 'px';
+            tabPill.style.transform = `translate3d(${x}px, 0, 0)`;
+            return;
+          }
+
+          if (tabGesture.mode === 'bar') {
+            event.preventDefault();
+            const barX = tabClamp(dx * 0.2, -26, 26);
+            const barY = tabClamp(dy * 0.2, -18, 10);
+            const barR = tabClamp(dx * 0.012, -2.4, 2.4);
+            tabSurface.style.setProperty('--bar-x', `${barX.toFixed(2)}px`);
+            tabSurface.style.setProperty('--bar-y', `${barY.toFixed(2)}px`);
+            tabSurface.style.setProperty('--bar-r', `${barR.toFixed(2)}deg`);
+          }
+        };
+
+        const endTabGesture = event => {
+          if (event.pointerId !== tabGesture.pointerId) return;
+          clearTabLongPress();
+          const hadMode = tabGesture.mode;
+          tabGesture.pointerId = null;
+          tabGesture.mode = null;
+
+          if (hadMode === 'pill') {
+            event.preventDefault();
+            tabSurface.classList.remove('is-pill-dragging');
+            positionTabPill();
+          } else if (hadMode === 'bar') {
+            event.preventDefault();
+            tabSurface.classList.remove('is-dragging');
+            requestAnimationFrame(() => {
+              tabSurface.classList.remove('is-grabbed');
+              tabSurface.style.setProperty('--bar-x', '0px');
+              tabSurface.style.setProperty('--bar-y', '0px');
+              tabSurface.style.setProperty('--bar-r', '0deg');
+            });
+            haptic(8);
+          }
+
+          try {
+            if (tabSurface.hasPointerCapture(event.pointerId)) {
+              tabSurface.releasePointerCapture(event.pointerId);
+            }
+          } catch (err) {}
+
+          if (hadMode) {
+            window.setTimeout(() => { tabGesture.suppressClick = false; }, 350);
+          }
+        };
+
+        tabSurface.addEventListener('pointerdown', onTabPointerDown);
+        tabSurface.addEventListener('pointermove', onTabPointerMove, { passive: false });
+        tabSurface.addEventListener('pointerup', endTabGesture);
+        tabSurface.addEventListener('pointercancel', endTabGesture);
+        tabSurface.addEventListener('lostpointercapture', event => {
+          if (event.target === tabSurface) endTabGesture(event);
+        });
+        tabSurface.addEventListener('dragstart', event => event.preventDefault());
+        tabSurface.addEventListener('contextmenu', event => event.preventDefault());
+
+        tabBar.addEventListener('click', event => {
+          const item = event.target.closest('.tabbar-item');
+          if (!item) return;
+          event.preventDefault();
+          if (tabGesture.suppressClick) {
+            tabGesture.suppressClick = false;
+            return;
+          }
+          setActive(item.dataset.target);
+          scrollToSection(item.dataset.target);
+          haptic(8);
+        });
+      }
 
       /* ---------------- Freetown clock ---------------- */
       const clockEl = $('#freetownTime');
@@ -1411,7 +1607,6 @@
         if (!contactModal) return;
         clearTimeout(contactResetTimer);
         if (drawerIsOpen) closeProjectDrawer({ restoreFocus: false });
-        setMobileNav(false);
         if (contactModal.classList.contains('is-sent') || (contactSubmit && contactSubmit.classList.contains('is-error'))) resetContactForm();
         modalReturnFocus = focusReturn || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
         contactModal.classList.add('is-open');
