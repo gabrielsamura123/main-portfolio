@@ -1075,6 +1075,9 @@
       let activeTarget = '';
       let tabScrollLock = '';
       let tabScrollLockUntil = 0;
+      let tabScrollFrame = 0;
+      let tabScrollToken = 0;
+      let tabScrollBehaviorRestore = null;
       let pillDropTimer = 0;
       const tabGesture = {
         pointerId: null,
@@ -1106,15 +1109,57 @@
         tabPill.style.transform = `translate3d(${active.offsetLeft}px, 0, 0)`;
       };
 
+      const restoreTabScrollBehavior = () => {
+        if (tabScrollBehaviorRestore === null) return;
+        document.documentElement.style.scrollBehavior = tabScrollBehaviorRestore;
+        tabScrollBehaviorRestore = null;
+      };
+
+      const cancelTabScroll = () => {
+        tabScrollToken += 1;
+        if (tabScrollFrame) cancelAnimationFrame(tabScrollFrame);
+        tabScrollFrame = 0;
+        tabScrollLock = '';
+        tabScrollLockUntil = 0;
+        restoreTabScrollBehavior();
+      };
+
       const scrollToSection = target => {
         const section = document.getElementById(target);
         if (!section) return;
+        cancelTabScroll();
+        const scrollPadding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+        const startY = window.scrollY;
+        const top = Math.max(0, section.getBoundingClientRect().top + startY - scrollPadding);
+        const distance = top - startY;
         tabScrollLock = target;
-        tabScrollLockUntil = performance.now() + 1200;
-        section.scrollIntoView({
-          behavior: reduceMotion ? 'auto' : 'smooth',
-          block: 'start'
-        });
+        if (reduceMotion || Math.abs(distance) < 1) {
+          window.scrollTo(0, top);
+          tabScrollLock = '';
+          tabScrollLockUntil = 0;
+          return;
+        }
+        const duration = Math.min(850, Math.max(360, Math.abs(distance) * 0.18));
+        tabScrollLockUntil = performance.now() + duration + 200;
+        const token = tabScrollToken;
+        const startedAt = performance.now();
+        tabScrollBehaviorRestore = document.documentElement.style.scrollBehavior;
+        document.documentElement.style.scrollBehavior = 'auto';
+        const step = now => {
+          if (token !== tabScrollToken) return;
+          const progress = Math.min(1, (now - startedAt) / duration);
+          const eased = 1 - Math.pow(1 - progress, 4);
+          window.scrollTo(0, startY + distance * eased);
+          if (progress < 1) {
+            tabScrollFrame = requestAnimationFrame(step);
+            return;
+          }
+          tabScrollFrame = 0;
+          tabScrollLock = '';
+          tabScrollLockUntil = 0;
+          restoreTabScrollBehavior();
+        };
+        tabScrollFrame = requestAnimationFrame(step);
       };
 
       const setActive = target => {
@@ -1178,6 +1223,8 @@
       };
 
       window.addEventListener('scroll', requestScroll, { passive: true });
+      window.addEventListener('wheel', cancelTabScroll, { passive: true });
+      window.addEventListener('touchstart', cancelTabScroll, { passive: true });
       window.addEventListener('resize', () => {
         positionPill();
         positionTabPill();
@@ -1248,31 +1295,30 @@
             if (tabGesture.pointerId !== event.pointerId || tabGesture.mode) return;
             tabGesture.mode = 'bar';
             tabGesture.suppressClick = true;
-            try { tabSurface.setPointerCapture(event.pointerId); } catch (err) {}
             tabSurface.classList.add('is-grabbed', 'is-dragging');
             haptic(6);
-          }, 320);
+          }, 550);
         };
 
         const onTabPointerMove = event => {
           if (event.pointerId !== tabGesture.pointerId) return;
           const dx = event.clientX - tabGesture.startX;
           const dy = event.clientY - tabGesture.startY;
+          if (Math.hypot(dx, dy) > 4) clearTabLongPress();
 
           if (!tabGesture.mode) {
-            if (Math.hypot(dx, dy) <= 6) return;
+            if (Math.hypot(dx, dy) <= 12) return;
             clearTabLongPress();
-            tabGesture.suppressClick = true;
-            tabGesture.mode = Math.abs(dx) > Math.abs(dy) ? 'pill' : 'ignored';
-            try { tabSurface.setPointerCapture(event.pointerId); } catch (err) {}
-            if (tabGesture.mode === 'pill') {
-              clearTimeout(pillDropTimer);
-              tabPill.classList.remove('is-pill-dropping');
-              tabSurface.classList.add('is-pill-dragging');
-              haptic(6);
-            } else {
+            if (Math.abs(dx) <= Math.abs(dy)) {
+              tabGesture.mode = 'ignored';
               return;
             }
+            tabGesture.mode = 'pill';
+            tabGesture.suppressClick = true;
+            clearTimeout(pillDropTimer);
+            tabPill.classList.remove('is-pill-dropping');
+            tabSurface.classList.add('is-pill-dragging');
+            haptic(6);
           }
 
           if (tabGesture.mode === 'pill') {
@@ -1340,24 +1386,15 @@
             haptic(8);
           }
 
-          try {
-            if (tabSurface.hasPointerCapture(event.pointerId)) {
-              tabSurface.releasePointerCapture(event.pointerId);
-            }
-          } catch (err) {}
-
           if (hadMode) {
             window.setTimeout(() => { tabGesture.suppressClick = false; }, 350);
           }
         };
 
         tabSurface.addEventListener('pointerdown', onTabPointerDown);
-        tabSurface.addEventListener('pointermove', onTabPointerMove, { passive: false });
-        tabSurface.addEventListener('pointerup', endTabGesture);
-        tabSurface.addEventListener('pointercancel', endTabGesture);
-        tabSurface.addEventListener('lostpointercapture', event => {
-          if (event.target === tabSurface) endTabGesture(event);
-        });
+        window.addEventListener('pointermove', onTabPointerMove, { passive: false });
+        window.addEventListener('pointerup', endTabGesture);
+        window.addEventListener('pointercancel', endTabGesture);
         tabSurface.addEventListener('dragstart', event => event.preventDefault());
         tabSurface.addEventListener('contextmenu', event => event.preventDefault());
 
