@@ -85,7 +85,7 @@ Update the sections in `index.html`:
 - Contact and social links
 
 ### Contact Form
-The inquiry modal validates fields client-side and sends submissions to `gabrielsamura9@gmail.com` through FormSubmit. The first live submission triggers a one-time activation email from FormSubmit; confirm it to enable delivery. On success, the form is replaced by a confirmation screen; failed sends show an inline warning with a direct email fallback. To change the destination, update the `action` attribute, the hidden `_next` URL, and `contactEndpoint` in `index.html`.
+The inquiry modal validates fields client-side and sends submissions to `gabrielsamura9@gmail.com` through FlowForm's no-signup email endpoint. The form posts an AJAX `application/x-www-form-urlencoded` request and receives JSON; no activation step is required. On success, the form is replaced by a confirmation screen; failed sends show an inline warning with a direct email fallback. To change the destination, update the `action` attribute and `contactEndpoint` in `index.html`, plus the hidden `_next` URL if needed.
 
 ### Project Drawer Data
 Project details live in the `projectDetails` array in `index.html`. Add project-specific demo URLs or source links there; live demos without a public URL open a prefilled inquiry in the contact modal.

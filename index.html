@@ -810,12 +810,9 @@
         <p class="modal-sub">Share a few details and I'll get back to you within 24 hours.</p>
       </header>
 
-      <form class="contact-form" id="contactForm" action="https://formsubmit.co/gabrielsamura9@gmail.com" method="POST" novalidate>
+      <form class="contact-form" id="contactForm" action="https://flowform.to/gabrielsamura9@gmail.com" method="POST" novalidate>
         <input type="hidden" name="_subject" value="New project inquiry from your portfolio">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://gabrielsamura123.github.io/main-portfolio/?sent=true#contact">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form-error-banner" id="contactError" role="alert" hidden>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20h15.8a2 2 0 0 0 1.7-2.5L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
           <p>Something went wrong. Please try again or email <a href="mailto:gabrielsamura9@gmail.com">gabrielsamura9@gmail.com</a> directly.</p>
@@ -1204,7 +1201,7 @@
       const contactSuccessClose = $('#contactSuccessClose');
       const contactEmailInput = $('#contactEmail');
       const submitLabelText = contactSubmit ? contactSubmit.querySelector('.submit-label-text') : null;
-      const contactEndpoint = 'https://formsubmit.co/ajax/gabrielsamura9@gmail.com';
+      const contactEndpoint = 'https://flowform.to/gabrielsamura9@gmail.com';
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const projectDrawer = $('#projectDrawer');
       const projectCards = $$('.project-card');
@@ -1514,6 +1511,7 @@
           const senderName = String(formData.get('name') || '').trim();
           const projectType = String(formData.get('projectType') || '').trim();
           formData.set('_subject', `New project inquiry from ${senderName}${projectType ? ` (${projectType})` : ''}`);
+          const payload = new URLSearchParams(formData);
 
           contactForm.setAttribute('aria-busy', 'true');
           contactSubmit.disabled = true;
@@ -1526,11 +1524,14 @@
           try {
             const response = await fetch(contactEndpoint, {
               method: 'POST',
-              headers: { Accept: 'application/json' },
-              body: formData
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: payload.toString()
             });
             const result = await response.json().catch(() => ({}));
-            if (!response.ok || String(result.success) === 'false') {
+            if (!response.ok || result.success === false) {
               throw new Error(result.message || 'Submission failed');
             }
 
