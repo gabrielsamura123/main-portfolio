@@ -816,6 +816,10 @@
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://gabrielsamura123.github.io/main-portfolio/?sent=true#contact">
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-error-banner" id="contactError" role="alert" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2.4 17.5A2 2 0 0 0 4.1 20h15.8a2 2 0 0 0 1.7-2.5L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          <p>Something went wrong. Please try again or email <a href="mailto:gabrielsamura9@gmail.com">gabrielsamura9@gmail.com</a> directly.</p>
+        </div>
         <div class="form-grid">
           <label class="form-field">
             <span class="form-label">Name</span>
@@ -859,14 +863,22 @@
         </label>
 
         <button class="btn btn-primary modal-submit" type="submit" id="contactSubmit">
-          <span class="submit-label">Send Message</span>
           <span class="submit-spinner" aria-hidden="true"></span>
-          <span class="submit-check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.2 4.2L19 7"/></svg>
+          <span class="submit-label">
+            <span class="submit-label-text">Send Message</span>
+            <svg class="submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
           </span>
         </button>
-        <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
       </form>
+
+      <div class="contact-success" id="contactSuccess" role="status" aria-live="polite" aria-hidden="true">
+        <span class="success-check" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.2 4.2L19 7"/></svg>
+        </span>
+        <h2 class="success-title">Message Received!</h2>
+        <p class="success-copy">Thanks for reaching out, Gabriel will reply within 24 hours.</p>
+        <button class="btn btn-primary success-close" type="button" id="contactSuccessClose" data-modal-close>Close</button>
+      </div>
     </div>
   </div>
 
@@ -1187,9 +1199,13 @@
       const contactModal = $('#contactModal');
       const contactForm = $('#contactForm');
       const contactSubmit = $('#contactSubmit');
-      const contactStatus = $('#contactStatus');
+      const contactError = $('#contactError');
+      const contactSuccess = $('#contactSuccess');
+      const contactSuccessClose = $('#contactSuccessClose');
+      const contactEmailInput = $('#contactEmail');
+      const submitLabelText = contactSubmit ? contactSubmit.querySelector('.submit-label-text') : null;
       const contactEndpoint = 'https://formsubmit.co/ajax/gabrielsamura9@gmail.com';
-      const contactEmailAddress = 'gabrielsamura9@gmail.com';
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const projectDrawer = $('#projectDrawer');
       const projectCards = $$('.project-card');
 
@@ -1256,6 +1272,7 @@
       let modalReturnFocus = null;
       let drawerReturnFocus = null;
       let activeProjectTitle = '';
+      let contactResetTimer = null;
 
       const syncOverlayLock = () => {
         body.classList.toggle('overlay-open', modalIsOpen || drawerIsOpen);
@@ -1281,19 +1298,62 @@
         }
       };
 
+      const setContactFieldsDisabled = disabled => {
+        $$('#contactForm .form-input, #contactForm .choice-input').forEach(field => {
+          if (field.type !== 'hidden') field.disabled = disabled;
+        });
+      };
+
       const resetContactForm = () => {
+        clearTimeout(contactResetTimer);
         if (!contactForm) return;
         contactForm.reset();
         contactForm.classList.remove('was-submitted');
+        contactForm.removeAttribute('aria-hidden');
+        setContactFieldsDisabled(false);
+        if (contactEmailInput) contactEmailInput.setCustomValidity('');
+        if (contactError) contactError.hidden = true;
+        if (contactModal) contactModal.classList.remove('is-sent');
+        if (contactSuccess) contactSuccess.setAttribute('aria-hidden', 'true');
         if (contactSubmit) {
           contactSubmit.disabled = false;
-          contactSubmit.classList.remove('is-loading', 'is-success', 'is-error');
+          contactSubmit.classList.remove('is-loading', 'is-error');
           contactSubmit.removeAttribute('aria-busy');
         }
-        if (contactStatus) {
-          contactStatus.textContent = '';
-          contactStatus.classList.remove('is-visible', 'is-error');
+        if (submitLabelText) submitLabelText.textContent = 'Send Message';
+      };
+
+      const showContactSuccess = () => {
+        contactForm.reset();
+        contactForm.classList.remove('was-submitted');
+        contactForm.setAttribute('aria-hidden', 'true');
+        contactForm.removeAttribute('aria-busy');
+        setContactFieldsDisabled(false);
+        if (contactError) contactError.hidden = true;
+        if (contactSubmit) {
+          contactSubmit.disabled = false;
+          contactSubmit.classList.remove('is-loading', 'is-error');
+          contactSubmit.removeAttribute('aria-busy');
         }
+        if (submitLabelText) submitLabelText.textContent = 'Send Message';
+        if (contactSuccess) contactSuccess.setAttribute('aria-hidden', 'false');
+        if (contactModal) contactModal.classList.add('is-sent');
+        if (contactSuccessClose) {
+          setTimeout(() => contactSuccessClose.focus({ preventScroll: true }), reduceMotion ? 0 : 420);
+        }
+      };
+
+      const showContactError = () => {
+        contactForm.removeAttribute('aria-busy');
+        setContactFieldsDisabled(false);
+        if (contactSubmit) {
+          contactSubmit.disabled = false;
+          contactSubmit.classList.remove('is-loading');
+          contactSubmit.classList.add('is-error');
+          contactSubmit.removeAttribute('aria-busy');
+        }
+        if (submitLabelText) submitLabelText.textContent = 'Send Message';
+        if (contactError) contactError.hidden = false;
       };
 
       const closeContactModal = ({ restoreFocus = true } = {}) => {
@@ -1304,8 +1364,8 @@
         syncOverlayLock();
         if (contactSubmit && (contactSubmit.classList.contains('is-loading') || contactSubmit.classList.contains('is-error'))) {
           resetContactForm();
-        } else if (contactSubmit && contactSubmit.classList.contains('is-success')) {
-          setTimeout(() => {
+        } else if (contactModal.classList.contains('is-sent')) {
+          contactResetTimer = setTimeout(() => {
             if (!modalIsOpen) resetContactForm();
           }, reduceMotion ? 0 : 300);
         }
@@ -1327,9 +1387,10 @@
 
       const openContactModal = (prefill = '', focusReturn = null) => {
         if (!contactModal) return;
+        clearTimeout(contactResetTimer);
         if (drawerIsOpen) closeProjectDrawer({ restoreFocus: false });
         setMobileNav(false);
-        if (contactSubmit && (contactSubmit.classList.contains('is-success') || contactSubmit.classList.contains('is-error'))) resetContactForm();
+        if (contactModal.classList.contains('is-sent') || (contactSubmit && contactSubmit.classList.contains('is-error'))) resetContactForm();
         modalReturnFocus = focusReturn || (document.activeElement instanceof HTMLElement ? document.activeElement : null);
         contactModal.classList.add('is-open');
         contactModal.setAttribute('aria-hidden', 'false');
@@ -1433,6 +1494,12 @@
       if (contactForm) {
         contactForm.addEventListener('submit', async event => {
           event.preventDefault();
+          if (contactEmailInput) {
+            contactEmailInput.setCustomValidity('');
+            if (!emailPattern.test(contactEmailInput.value.trim())) {
+              contactEmailInput.setCustomValidity('Please enter a valid email address.');
+            }
+          }
           if (!contactForm.checkValidity()) {
             contactForm.classList.add('was-submitted');
             contactForm.reportValidity();
@@ -1441,19 +1508,20 @@
 
           contactForm.classList.remove('was-submitted');
           if (!contactSubmit) return;
-          contactSubmit.disabled = true;
-          contactSubmit.setAttribute('aria-busy', 'true');
-          contactSubmit.classList.add('is-loading');
-          contactSubmit.classList.remove('is-error');
-          if (contactStatus) {
-            contactStatus.textContent = '';
-            contactStatus.classList.remove('is-visible', 'is-error');
-          }
+          if (contactError) contactError.hidden = true;
 
           const formData = new FormData(contactForm);
           const senderName = String(formData.get('name') || '').trim();
           const projectType = String(formData.get('projectType') || '').trim();
           formData.set('_subject', `New project inquiry from ${senderName}${projectType ? ` (${projectType})` : ''}`);
+
+          contactForm.setAttribute('aria-busy', 'true');
+          contactSubmit.disabled = true;
+          contactSubmit.setAttribute('aria-busy', 'true');
+          contactSubmit.classList.add('is-loading');
+          contactSubmit.classList.remove('is-error');
+          setContactFieldsDisabled(true);
+          if (submitLabelText) submitLabelText.textContent = 'Sending...';
 
           try {
             const response = await fetch(contactEndpoint, {
@@ -1466,26 +1534,14 @@
               throw new Error(result.message || 'Submission failed');
             }
 
-            contactSubmit.classList.remove('is-loading');
-            contactSubmit.classList.add('is-success');
-            contactSubmit.removeAttribute('aria-busy');
-            if (contactStatus) {
-              contactStatus.textContent = 'Message sent. I will get back to you within 24 hours.';
-              contactStatus.classList.add('is-visible');
-            }
+            showContactSuccess();
           } catch (error) {
-            contactSubmit.disabled = false;
-            contactSubmit.classList.remove('is-loading');
-            contactSubmit.classList.add('is-error');
-            contactSubmit.removeAttribute('aria-busy');
-            if (contactStatus) {
-              contactStatus.textContent = `Could not send right now. Please email ${contactEmailAddress} directly.`;
-              contactStatus.classList.add('is-visible', 'is-error');
-            }
+            showContactError();
           }
         });
 
         contactForm.addEventListener('input', () => {
+          if (contactEmailInput) contactEmailInput.setCustomValidity('');
           if (contactForm.classList.contains('was-submitted') && contactForm.checkValidity()) {
             contactForm.classList.remove('was-submitted');
           }
