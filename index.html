@@ -546,7 +546,7 @@
         </header>
 
         <div class="pricing-grid">
-          <article class="glass price-card reveal" style="--reveal-delay:0ms">
+          <article class="glass price-card reveal" style="--reveal-delay:0ms" data-engagement="fixed" data-accent="violet" data-project-type="Fixed Scope" data-budget="$5K&ndash;$25K" tabindex="0">
             <span class="spotlight" aria-hidden="true"></span>
             <div class="price-head">
               <span class="price-icon">
@@ -568,7 +568,7 @@
             </ul>
           </article>
 
-          <article class="glass price-card recommended reveal" style="--reveal-delay:110ms">
+          <article class="glass price-card recommended reveal" style="--reveal-delay:110ms" data-engagement="retainer" data-accent="cyan" data-project-type="Monthly Retainer" data-budget="$3K&ndash;$8K/mo" tabindex="0">
             <span class="recommended-badge">RECOMMENDED</span>
             <span class="spotlight" aria-hidden="true"></span>
             <div class="price-head">
@@ -592,7 +592,7 @@
             </ul>
           </article>
 
-          <article class="glass price-card reveal" style="--reveal-delay:220ms">
+          <article class="glass price-card reveal" style="--reveal-delay:220ms" data-engagement="advisory" data-accent="violet" data-project-type="Technical Advisory" data-budget="$200&ndash;$400/hr" tabindex="0">
             <span class="spotlight" aria-hidden="true"></span>
             <div class="price-head">
               <span class="price-icon price-icon-violet">
@@ -828,29 +828,27 @@
           </label>
         </div>
 
-        <label class="form-field">
-          <span class="form-label">Project type</span>
-          <span class="select-wrap">
-            <select class="form-input form-select" name="projectType" id="contactType" required>
-              <option value="" disabled selected>Select a project type</option>
-              <option value="Web App">Web App</option>
-              <option value="Mobile App">Mobile App</option>
-              <option value="Retainer">Retainer</option>
-              <option value="Advisory">Advisory</option>
-            </select>
-            <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
-          </span>
-        </label>
+        <fieldset class="form-field form-fieldset">
+          <legend class="form-label">Project type</legend>
+          <div class="choice-group">
+            <input class="choice-input" type="radio" name="projectType" id="typeFixed" value="Fixed Scope" required>
+            <label class="choice-pill" for="typeFixed">Fixed Scope</label>
+            <input class="choice-input" type="radio" name="projectType" id="typeRetainer" value="Monthly Retainer" required>
+            <label class="choice-pill" for="typeRetainer">Monthly Retainer</label>
+            <input class="choice-input" type="radio" name="projectType" id="typeAdvisory" value="Technical Advisory" required>
+            <label class="choice-pill" for="typeAdvisory">Technical Advisory</label>
+          </div>
+        </fieldset>
 
         <fieldset class="form-field form-fieldset">
           <legend class="form-label">Budget range</legend>
           <div class="choice-group">
-            <input class="choice-input" type="radio" name="budget" id="budgetSmall" value="Under $3k" required>
-            <label class="choice-pill" for="budgetSmall">&lt;$3k</label>
-            <input class="choice-input" type="radio" name="budget" id="budgetMid" value="$3k - $8k" required>
-            <label class="choice-pill" for="budgetMid">$3k - $8k</label>
-            <input class="choice-input" type="radio" name="budget" id="budgetLarge" value="$8k+" required>
-            <label class="choice-pill" for="budgetLarge">$8k+</label>
+            <input class="choice-input" type="radio" name="budget" id="budgetFixed" value="$5K&ndash;$25K" required>
+            <label class="choice-pill" for="budgetFixed">$5K&ndash;$25K</label>
+            <input class="choice-input" type="radio" name="budget" id="budgetRetainer" value="$3K&ndash;$8K/mo" required>
+            <label class="choice-pill" for="budgetRetainer">$3K&ndash;$8K/mo</label>
+            <input class="choice-input" type="radio" name="budget" id="budgetAdvisory" value="$200&ndash;$400/hr" required>
+            <label class="choice-pill" for="budgetAdvisory">$200&ndash;$400/hr</label>
           </div>
         </fieldset>
 
@@ -1202,6 +1200,8 @@
       const contactEmailInput = $('#contactEmail');
       const submitLabelText = contactSubmit ? contactSubmit.querySelector('.submit-label-text') : null;
       const contactEndpoint = 'https://flowform.to/gabrielsamura9@gmail.com';
+      const pricingGrid = $('.pricing-grid');
+      const engagementCards = $$('.price-card[data-engagement]');
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const projectDrawer = $('#projectDrawer');
       const projectCards = $$('.project-card');
@@ -1382,7 +1382,26 @@
         }
       };
 
-      const openContactModal = (prefill = '', focusReturn = null) => {
+      const selectContactChoice = (name, value) => {
+        if (!value) return;
+        const choice = $$(`input[name="${name}"]`).find(input => input.value === value);
+        if (choice) choice.checked = true;
+      };
+
+      const selectEngagementCard = card => {
+        if (!card) return;
+        engagementCards.forEach(item => {
+          const isActive = item === card;
+          item.classList.toggle('is-active', isActive);
+          if (isActive) item.setAttribute('aria-current', 'true');
+          else item.removeAttribute('aria-current');
+        });
+        if (pricingGrid) {
+          pricingGrid.classList.toggle('has-selection', engagementCards.some(item => item.classList.contains('is-active')));
+        }
+      };
+
+      const openContactModal = ({ message = '', focusReturn = null, projectType = '', budget = '' } = {}) => {
         if (!contactModal) return;
         clearTimeout(contactResetTimer);
         if (drawerIsOpen) closeProjectDrawer({ restoreFocus: false });
@@ -1393,12 +1412,14 @@
         contactModal.setAttribute('aria-hidden', 'false');
         modalIsOpen = true;
         syncOverlayLock();
-        if (prefill) {
-          const message = $('#contactMessage');
-          if (message) message.value = prefill;
+        if (message) {
+          const field = $('#contactMessage');
+          if (field) field.value = message;
         }
+        selectContactChoice('projectType', projectType);
+        selectContactChoice('budget', budget);
         setTimeout(() => {
-          const target = prefill ? $('#contactMessage') : $('#contactName');
+          const target = message ? $('#contactMessage') : $('#contactName');
           if (target) target.focus();
         }, reduceMotion ? 20 : 180);
       };
@@ -1469,7 +1490,27 @@
       $$('[data-contact-open]').forEach(trigger => {
         trigger.addEventListener('click', event => {
           event.preventDefault();
-          openContactModal();
+          const card = trigger.closest('.price-card[data-engagement]');
+          if (card) {
+            selectEngagementCard(card);
+            openContactModal({
+              focusReturn: trigger,
+              projectType: card.dataset.projectType || '',
+              budget: card.dataset.budget || ''
+            });
+            return;
+          }
+          openContactModal({ focusReturn: trigger });
+        });
+      });
+
+      engagementCards.forEach(card => {
+        card.addEventListener('click', () => selectEngagementCard(card));
+        card.addEventListener('keydown', event => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          if (event.target.closest('a, button, input, select, textarea')) return;
+          event.preventDefault();
+          selectEngagementCard(card);
         });
       });
 
@@ -1561,10 +1602,10 @@
           const title = activeProjectTitle || 'this project';
           closeProjectDrawer({ restoreFocus: false });
           setTimeout(() => {
-            openContactModal(
-              `I'd like a live demo of ${title}. Please share access details and availability.`,
-              returnFocus
-            );
+            openContactModal({
+              message: `I'd like a live demo of ${title}. Please share access details and availability.`,
+              focusReturn: returnFocus
+            });
           }, reduceMotion ? 0 : 140);
         });
       }

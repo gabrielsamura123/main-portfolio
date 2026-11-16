@@ -11,7 +11,7 @@ An immersive black liquid-glass portfolio built with Tailwind CSS. The site uses
 - **Custom Interactions**: 12px cursor dot with trailing ring, button ripples, card spotlight, and magnetic social links
 - **Animated Toolkit**: Progress bars and circular skill rings triggered by IntersectionObserver
 - **Bio & Stats**: Animated counters for projects, experience, clients, and retention
-- **Services & Pricing**: 3D tilt service cards plus fixed-scope, retainer, and advisory engagement models
+- **Services & Pricing**: 3D tilt service cards plus interactive fixed-scope, retainer, and advisory engagement models that preselect the matching project type, budget, and contact modal state
 - **Project Showcase**: Five project cards with alternating layouts, a swipeable mobile carousel, and a slide-over detail drawer with highlights, tech stack, and project CTAs
 - **Contact Section**: Ambient blobs, orbit lines, reduced-motion support, direct email/LinkedIn actions, and a glass project inquiry modal with validated fields and success states
 - **Fully Responsive**: Tuned layouts from 390px through 1920px with zero horizontal overflow
