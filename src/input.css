@@ -3202,9 +3202,17 @@ body.is-ready .portrait-wrap {
   color: rgba(255, 255, 255, 0.42);
 }
 
-.form-select option {
+.form-select option,
+.form-select optgroup {
   background: #0a0a0a;
   color: #fff;
+}
+
+.form-hint {
+  margin-top: -2px;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.44);
 }
 
 .select-chevron {
@@ -3228,7 +3236,8 @@ body.is-ready .portrait-wrap {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
-.contact-form.was-submitted .form-fieldset:has(.choice-input:invalid) .form-label {
+.contact-form.was-submitted .form-fieldset:has(.choice-input:invalid) .form-label,
+.contact-form.was-submitted .form-field:has(.form-select:invalid) .form-label {
   color: #ffffff;
 }
 

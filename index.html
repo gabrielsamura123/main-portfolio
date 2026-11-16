@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="tailwind.css?v=20261116-3">
+  <link rel="stylesheet" href="tailwind.css?v=20261116-4">
 </head>
 <body>
   <!-- Page loader -->
@@ -546,7 +546,7 @@
         </header>
 
         <div class="pricing-grid">
-          <article class="glass price-card reveal" style="--reveal-delay:0ms" data-engagement="fixed" data-project-type="Fixed Scope" data-budget="$5K&ndash;$25K" tabindex="0">
+          <article class="glass price-card reveal" style="--reveal-delay:0ms" data-engagement="fixed" data-engagement-type="Fixed Scope" data-budget="$5K&ndash;$25K" tabindex="0">
             <span class="spotlight" aria-hidden="true"></span>
             <div class="price-head">
               <span class="price-icon">
@@ -568,7 +568,7 @@
             </ul>
           </article>
 
-          <article class="glass price-card recommended reveal" style="--reveal-delay:110ms" data-engagement="retainer" data-project-type="Monthly Retainer" data-budget="$3K&ndash;$8K/mo" tabindex="0">
+          <article class="glass price-card recommended reveal" style="--reveal-delay:110ms" data-engagement="retainer" data-engagement-type="Monthly Retainer" data-budget="$3K&ndash;$8K/mo" tabindex="0">
             <span class="recommended-badge">RECOMMENDED</span>
             <span class="spotlight" aria-hidden="true"></span>
             <div class="price-head">
@@ -592,7 +592,7 @@
             </ul>
           </article>
 
-          <article class="glass price-card reveal" style="--reveal-delay:220ms" data-engagement="advisory" data-project-type="Technical Advisory" data-budget="$200&ndash;$400/hr" tabindex="0">
+          <article class="glass price-card reveal" style="--reveal-delay:220ms" data-engagement="advisory" data-engagement-type="Technical Advisory" data-budget="$200&ndash;$400/hr" tabindex="0">
             <span class="spotlight" aria-hidden="true"></span>
             <div class="price-head">
               <span class="price-icon">
@@ -823,14 +823,41 @@
           </label>
         </div>
 
+        <label class="form-field" for="contactProjectType">
+          <span class="form-label">Project type</span>
+          <span class="select-wrap">
+            <select class="form-input form-select" name="projectType" id="contactProjectType" required aria-describedby="projectTypeHint">
+              <option value="" disabled selected>Choose the project you want to build...</option>
+              <option value="Recommendation needed">Not sure &mdash; recommend the best fit for me</option>
+              <optgroup label="Recommended based on my experience">
+                <option value="Real Estate Website">Real Estate Website</option>
+                <option value="Business Website">Business / Corporate Website</option>
+                <option value="Booking Platform">Booking &amp; Reservation Platform</option>
+                <option value="Custom Web App">Custom Web App / SaaS</option>
+                <option value="E-commerce Store">E-commerce Store</option>
+              </optgroup>
+              <optgroup label="More project types">
+                <option value="Mobile App">Mobile App (iOS &amp; Android)</option>
+                <option value="Admin Dashboard">Admin Dashboard / Internal Tool</option>
+                <option value="ERP System">ERP / Business Management System</option>
+                <option value="API / Backend">API / Database Backend</option>
+                <option value="Portfolio Website">Portfolio / Personal Brand Website</option>
+                <option value="Other / Custom">Other &mdash; custom project</option>
+              </optgroup>
+            </select>
+            <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+          </span>
+          <span class="form-hint" id="projectTypeHint" aria-live="polite">Not sure? Choose the recommendation option and I&rsquo;ll suggest the best fit for your goals.</span>
+        </label>
+
         <fieldset class="form-field form-fieldset">
-          <legend class="form-label">Project type</legend>
+          <legend class="form-label">Engagement model</legend>
           <div class="choice-group">
-            <input class="choice-input" type="radio" name="projectType" id="typeFixed" value="Fixed Scope" required>
+            <input class="choice-input" type="radio" name="engagement" id="typeFixed" value="Fixed Scope" required>
             <label class="choice-pill" for="typeFixed">Fixed Scope</label>
-            <input class="choice-input" type="radio" name="projectType" id="typeRetainer" value="Monthly Retainer" required>
+            <input class="choice-input" type="radio" name="engagement" id="typeRetainer" value="Monthly Retainer" required>
             <label class="choice-pill" for="typeRetainer">Monthly Retainer</label>
-            <input class="choice-input" type="radio" name="projectType" id="typeAdvisory" value="Technical Advisory" required>
+            <input class="choice-input" type="radio" name="engagement" id="typeAdvisory" value="Technical Advisory" required>
             <label class="choice-pill" for="typeAdvisory">Technical Advisory</label>
           </div>
         </fieldset>
@@ -1297,7 +1324,7 @@
             tabGesture.suppressClick = true;
             tabSurface.classList.add('is-grabbed', 'is-dragging');
             haptic(6);
-          }, 550);
+          }, 700);
         };
 
         const onTabPointerMove = event => {
@@ -1438,11 +1465,28 @@
       const contactSuccess = $('#contactSuccess');
       const contactSuccessClose = $('#contactSuccessClose');
       const contactEmailInput = $('#contactEmail');
+      const contactProjectType = $('#contactProjectType');
+      const projectTypeHint = $('#projectTypeHint');
       const submitLabelText = contactSubmit ? contactSubmit.querySelector('.submit-label-text') : null;
       const contactEndpoint = 'https://flowform.to/gabrielsamura9@gmail.com';
       const pricingGrid = $('.pricing-grid');
       const engagementCards = $$('.price-card[data-engagement]');
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const defaultProjectTypeHint = "Not sure? Choose the recommendation option and I'll suggest the best fit for your goals.";
+      const projectTypeGuides = {
+        'Real Estate Website': 'Recommended: property listings, map search, agent profiles, inquiry capture, and an admin dashboard.',
+        'Business Website': 'Recommended: a polished multi-page site with services, credibility sections, lead capture, and SEO-ready pages.',
+        'Booking Platform': 'Recommended: availability calendars, reservations, payments, reminders, and an admin schedule.',
+        'Custom Web App': 'Recommended: authentication, dashboards, workflows, and a PostgreSQL database built around your business.',
+        'E-commerce Store': 'Recommended: product catalog, cart, checkout, order management, and payment integration.',
+        'Mobile App': 'Recommended: cross-platform iOS and Android app with notifications, offline support, and API integration.',
+        'Admin Dashboard': 'Recommended: role-based access, data tables, reports, approvals, and internal workflow automation.',
+        'ERP System': 'Recommended: inventory, finance, HR, billing, permissions, and operational reporting in one system.',
+        'API / Backend': 'Recommended: database schema, authentication, REST or GraphQL APIs, and secure integrations.',
+        'Portfolio Website': 'Recommended: personal brand site with case studies, motion, contact flow, and CMS-ready content.',
+        'Recommendation needed': "No problem. I'll recommend the best fit based on your goals, timeline, and budget.",
+        'Other / Custom': "Tell me what you have in mind in the message field and I'll suggest the closest approach."
+      };
       const projectDrawer = $('#projectDrawer');
       const projectCards = $$('.project-card');
 
@@ -1552,10 +1596,16 @@
         });
       };
 
+      const syncProjectTypeHint = () => {
+        if (!contactProjectType || !projectTypeHint) return;
+        projectTypeHint.textContent = projectTypeGuides[contactProjectType.value] || defaultProjectTypeHint;
+      };
+
       const resetContactForm = () => {
         clearTimeout(contactResetTimer);
         if (!contactForm) return;
         contactForm.reset();
+        syncProjectTypeHint();
         contactForm.classList.remove('was-submitted');
         contactForm.removeAttribute('aria-hidden');
         setContactFieldsDisabled(false);
@@ -1573,6 +1623,7 @@
 
       const showContactSuccess = () => {
         contactForm.reset();
+        syncProjectTypeHint();
         contactForm.classList.remove('was-submitted');
         contactForm.setAttribute('aria-hidden', 'true');
         contactForm.removeAttribute('aria-busy');
@@ -1639,6 +1690,11 @@
         if (choice) choice.checked = true;
       };
 
+      if (contactProjectType) {
+        contactProjectType.addEventListener('change', syncProjectTypeHint);
+        syncProjectTypeHint();
+      }
+
       const selectEngagementCard = card => {
         if (!card) return;
         engagementCards.forEach(item => {
@@ -1652,7 +1708,7 @@
         }
       };
 
-      const openContactModal = ({ message = '', focusReturn = null, projectType = '', budget = '' } = {}) => {
+      const openContactModal = ({ message = '', focusReturn = null, engagement = '', budget = '', projectType = '' } = {}) => {
         if (!contactModal) return;
         clearTimeout(contactResetTimer);
         if (drawerIsOpen) closeProjectDrawer({ restoreFocus: false });
@@ -1666,7 +1722,11 @@
           const field = $('#contactMessage');
           if (field) field.value = message;
         }
-        selectContactChoice('projectType', projectType);
+        if (projectType && contactProjectType) {
+          contactProjectType.value = projectType;
+          syncProjectTypeHint();
+        }
+        selectContactChoice('engagement', engagement);
         selectContactChoice('budget', budget);
         setTimeout(() => {
           const target = message ? $('#contactMessage') : $('#contactName');
@@ -1766,7 +1826,7 @@
             selectEngagementCard(card);
             openContactModal({
               focusReturn: trigger,
-              projectType: card.dataset.projectType || '',
+              engagement: card.dataset.engagementType || '',
               budget: card.dataset.budget || ''
             });
             return;
@@ -1822,7 +1882,11 @@
           const formData = new FormData(contactForm);
           const senderName = String(formData.get('name') || '').trim();
           const projectType = String(formData.get('projectType') || '').trim();
-          formData.set('_subject', `New project inquiry from ${senderName}${projectType ? ` (${projectType})` : ''}`);
+          const engagement = String(formData.get('engagement') || '').trim();
+          formData.set(
+            '_subject',
+            `New project inquiry from ${senderName}${projectType ? ` (${projectType})` : ''}${engagement ? ` - ${engagement}` : ''}`
+          );
           const payload = new URLSearchParams(formData);
 
           contactForm.setAttribute('aria-busy', 'true');
