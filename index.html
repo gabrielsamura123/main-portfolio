@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="tailwind.css?v=20261116-2">
+  <link rel="stylesheet" href="tailwind.css?v=20261116-3">
 </head>
 <body>
   <!-- Page loader -->
@@ -1075,6 +1075,7 @@
       let activeTarget = '';
       let tabScrollLock = '';
       let tabScrollLockUntil = 0;
+      let pillDropTimer = 0;
       const tabGesture = {
         pointerId: null,
         mode: null,
@@ -1265,7 +1266,10 @@
             tabGesture.mode = Math.abs(dx) > Math.abs(dy) ? 'pill' : 'ignored';
             try { tabSurface.setPointerCapture(event.pointerId); } catch (err) {}
             if (tabGesture.mode === 'pill') {
+              clearTimeout(pillDropTimer);
+              tabPill.classList.remove('is-pill-dropping');
               tabSurface.classList.add('is-pill-dragging');
+              haptic(6);
             } else {
               return;
             }
@@ -1315,7 +1319,15 @@
           if (hadMode === 'pill') {
             event.preventDefault();
             tabSurface.classList.remove('is-pill-dragging');
+            clearTimeout(pillDropTimer);
+            tabPill.classList.remove('is-pill-dropping');
             positionTabPill();
+            void tabPill.offsetWidth;
+            tabPill.classList.add('is-pill-dropping');
+            pillDropTimer = window.setTimeout(() => {
+              tabPill.classList.remove('is-pill-dropping');
+            }, 600);
+            haptic(8);
           } else if (hadMode === 'bar') {
             event.preventDefault();
             tabSurface.classList.remove('is-dragging');
