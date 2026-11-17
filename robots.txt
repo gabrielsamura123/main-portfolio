@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /README.md
+Disallow: /Portfolio_Website_2-about.html
+Disallow: /Portfolio_Website_2-projects.html
+Disallow: /Portfolio_Website_2-services.html
+
+Sitemap: https://gabrielsamura123.github.io/main-portfolio/sitemap.xml

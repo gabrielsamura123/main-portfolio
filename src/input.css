@@ -322,7 +322,7 @@ main {
   display: grid;
   place-items: center;
   background: #000;
-  transition: opacity 0.8s var(--ease), visibility 0.8s;
+  transition: opacity 0.55s var(--ease), visibility 0.55s;
 }
 
 .loader.is-done {
@@ -335,7 +335,7 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 18px;
-  transition: transform 0.8s var(--ease), filter 0.8s var(--ease);
+  transition: transform 0.55s var(--ease), filter 0.55s var(--ease);
 }
 
 .loader.is-done .loader-inner {
@@ -381,7 +381,7 @@ main {
   height: 100%;
   transform: translateX(-100%);
   background: linear-gradient(90deg, #6f6f6f, #ffffff);
-  animation: loaderBar 1.2s var(--ease) 0.15s forwards;
+  animation: loaderBar 0.6s var(--ease) 0.05s forwards;
 }
 
 /* ============================================================
@@ -1786,7 +1786,7 @@ body.is-ready .anim-cta {
 }
 
 body.is-ready .portrait-wrap {
-  animation: heroVisual 1.2s var(--spring) 0.9s forwards;
+  animation: heroVisual 1s var(--spring) 0.4s forwards;
 }
 
 .portrait-halo {
@@ -4258,5 +4258,58 @@ body.is-ready .portrait-wrap {
   .price-card:hover,
   .price-card.is-active {
     transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --blur: 8px;
+  }
+
+  .bg-noise {
+    display: none;
+  }
+
+  .blob,
+  .contact-blob-1,
+  .contact-blob-2,
+  .particle,
+  .float-chip,
+  .orbit,
+  .contact-line,
+  .scroll-cue {
+    display: none;
+  }
+
+  .glass,
+  .nav-shell,
+  .price-card,
+  .project-card,
+  .portrait-frame,
+  .portrait-glass,
+  .contact-modal-panel,
+  .success-panel,
+  .drawer-panel,
+  .footer-shell {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background-color: rgba(12, 12, 16, 0.86);
+  }
+
+  .hero-name-inner {
+    animation: nameReveal 0.7s var(--ease) both !important;
+  }
+
+  .portrait-halo,
+  .portrait-ring,
+  .portrait-frame,
+  .status-dot::before,
+  .skill-pills .shimmer {
+    animation: none !important;
+  }
+
+  .price-card,
+  .project-card {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
   }
 }
