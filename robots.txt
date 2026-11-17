@@ -9,4 +9,4 @@ Disallow: /Portfolio_Website_2-about.html
 Disallow: /Portfolio_Website_2-projects.html
 Disallow: /Portfolio_Website_2-services.html
 
-Sitemap: https://gabrielsamura123.github.io/main-portfolio/sitemap.xml
+Sitemap: https://main-portfolio-indol-five.vercel.app/sitemap.xml
