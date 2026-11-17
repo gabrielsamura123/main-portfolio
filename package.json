@@ -5,8 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "npx serve . -p 3000",
-    "build": "tailwindcss -i ./src/input.css -o ./tailwind.css --minify && node ./scripts/prepare-dist.js && tailwindcss -i ./src/input.css -o ./dist/tailwind.css --minify",
-    "preview": "npx serve dist -p 3000",
+    "build": "tailwindcss -i ./src/input.css -o ./tailwind.css --minify && node scripts/prepare-dist.js",
+    "preview": "npx serve public -p 3000",
     "watch:css": "tailwindcss -i ./src/input.css -o ./tailwind.css --watch"
   },
   "repository": {

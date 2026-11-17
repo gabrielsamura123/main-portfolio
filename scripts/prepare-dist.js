@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const output = path.join(root, 'dist');
+const output = path.join(root, 'public');
 const excludedNames = new Set([
   '.env',
   '.git',
@@ -10,6 +10,7 @@ const excludedNames = new Set([
   '.vercel',
   'dist',
   'node_modules',
+  'public',
   'package-lock.json',
   'package.json',
   'README.md',
