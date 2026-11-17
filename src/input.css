@@ -1235,11 +1235,14 @@ button.link-arrow {
     rotate(var(--bar-r, 0deg))
     scale(var(--bar-s, 1));
   transform-origin: center bottom;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
   transition:
     transform 0.55s var(--spring),
     box-shadow 0.4s var(--ease),
     background 0.4s var(--ease);
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
 .tabbar-surface::before {
@@ -1274,6 +1277,12 @@ button.link-arrow {
     0 30px 58px rgba(0, 0, 0, 0.68);
 }
 
+.tabbar-surface.is-pill-dragging,
+.tabbar-surface.is-dragging {
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  backdrop-filter: blur(10px) saturate(150%);
+}
+
 .tabbar-surface.is-dragging {
   transition: none;
 }
@@ -1291,7 +1300,7 @@ button.link-arrow {
     transform 0.55s var(--spring),
     width 0.35s var(--ease),
     opacity 0.25s;
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
 .tabbar-pill::before {
@@ -1328,7 +1337,8 @@ button.link-arrow {
   transition: opacity 0.3s var(--ease);
 }
 
-.tabbar-surface.is-pill-dragging .tabbar-pill {
+.tabbar-surface.is-pill-dragging .tabbar-pill,
+.tabbar-pill.is-pill-settling {
   transition: none;
 }
 
@@ -1386,6 +1396,7 @@ button.link-arrow {
   letter-spacing: 0.055em;
   text-transform: uppercase;
   transform: scale(1);
+  touch-action: manipulation;
   transition:
     color 0.3s var(--ease),
     transform 0.28s var(--spring);
